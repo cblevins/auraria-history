@@ -1,0 +1,60 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.container {
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 0 $spacing-lg;
+}
+
+.site-content {
+  padding-top: calc(#{$nav-height} + #{$spacing-xl});
+  padding-bottom: $spacing-xl;
+  min-height: 60vh;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+// Footer
+.site-footer {
+  background-color: $color-primary;
+  color: $color-white;
+  padding: $spacing-lg 0;
+  text-align: center;
+  font-size: 0.875rem;
+
+  p {
+    margin-bottom: $spacing-sm;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  a {
+    color: $color-white;
+    text-decoration: underline;
+
+    &:hover {
+      color: $color-accent;
+    }
+  }
+}
+
+// Page content
+.page-header {
+  margin-bottom: $spacing-lg;
+
+  h1 {
+    font-size: 2.25rem;
+    color: $color-primary;
+  }
+}

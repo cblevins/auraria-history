@@ -1,0 +1,62 @@
+html {
+  font-size: 100%;
+}
+
+body {
+  font-family: $font-body;
+  color: $color-text;
+  line-height: 1.7;
+  background-color: $color-bg;
+}
+
+h1, h2, h3, h4 {
+  font-family: $font-heading;
+  line-height: 1.3;
+  margin-top: 0;
+  margin-bottom: $spacing-md;
+}
+
+h1 {
+  font-size: 2.25rem;
+  color: $color-primary;
+}
+
+h2 {
+  font-size: 1.75rem;
+}
+
+h3 {
+  font-size: 1.375rem;
+}
+
+h4 {
+  font-size: 1.125rem;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+a {
+  color: $color-primary;
+  text-decoration: underline;
+  transition: color 0.2s;
+
+  &:hover {
+    color: darken($color-primary, 10%);
+  }
+}
+
+blockquote {
+  border-left: 3px solid $color-accent;
+  padding-left: $spacing-lg;
+  margin-left: 0;
+  margin-right: 0;
+  font-style: italic;
+  color: $color-text-light;
+}
+
+strong {
+  font-weight: 700;
+}

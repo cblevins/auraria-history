@@ -1,0 +1,50 @@
+@media (max-width: $breakpoint-mobile) {
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: $nav-height;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background-color: $color-primary;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    padding: $spacing-sm 0;
+
+    &.open {
+      display: flex;
+    }
+
+    li {
+      width: 100%;
+    }
+
+    a {
+      display: block;
+      padding: $spacing-md $spacing-lg;
+      text-align: center;
+      border-bottom: none;
+
+      &:hover,
+      &.active {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-bottom: none;
+      }
+    }
+  }
+
+  .site-title {
+    font-size: 1.1rem;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+}

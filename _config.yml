@@ -1,0 +1,31 @@
+title: "Recovering Auraria's Past"
+description: "Histories of a displaced neighborhood."
+url: "https://aurariahistory.org"
+baseurl: ""
+
+# Contact
+contact_email: rachel.gross@ucdenver.edu
+
+# Podcast / audio hosting (fill in when platform is chosen)
+podcast:
+  spotify_url: ""
+  apple_url: ""
+  soundcloud_url: ""
+  rss_url: ""
+
+# Build settings
+theme: null
+markdown: kramdown
+permalink: pretty
+
+# Sass
+sass:
+  style: compressed
+
+# Exclude from build
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - migration-plan.md
