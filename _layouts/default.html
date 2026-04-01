@@ -14,10 +14,8 @@
 
   {% include nav.html %}
 
-  <main class="site-content">
-    <div class="container">
-      {{ content }}
-    </div>
+  <main class="site-content{% if page.layout == 'home' %} site-content--home{% endif %}">
+    {{ content }}
   </main>
 
   {% include footer.html %}

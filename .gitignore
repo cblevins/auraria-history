@@ -6,3 +6,5 @@ vendor/
 .bundle/
 .DS_Store
 Gemfile.lock
+wp-uploads/
+*.xml

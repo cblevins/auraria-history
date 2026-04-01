@@ -1,0 +1,191 @@
+// Hero section
+.hero {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  margin-top: $nav-height;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+}
+
+.hero-title {
+  color: $color-white;
+  font-size: 3.5rem;
+  margin-bottom: $spacing-sm;
+  line-height: 1.1;
+}
+
+.hero-tagline {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.375rem;
+  font-family: $font-heading;
+  font-style: italic;
+  margin: 0;
+}
+
+// Intro section
+.home-intro {
+  padding: $spacing-xl 0;
+  text-align: center;
+
+  p {
+    font-size: 1.125rem;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    color: $color-text-light;
+  }
+}
+
+// Section cards
+.home-cards {
+  padding: 0 0 $spacing-xl;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $spacing-lg;
+}
+
+.card {
+  text-decoration: none;
+  color: $color-text;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.2s, transform 0.2s;
+
+  &:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+    color: $color-text;
+  }
+}
+
+.card-image {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+  }
+
+  .card:hover & img {
+    transform: scale(1.03);
+  }
+}
+
+.card-body {
+  padding: $spacing-md $spacing-lg;
+
+  h2 {
+    font-size: 1.25rem;
+    margin-bottom: $spacing-sm;
+    color: $color-primary;
+  }
+
+  p {
+    font-size: 0.9375rem;
+    color: $color-text-light;
+    margin-bottom: $spacing-sm;
+  }
+}
+
+// Quote section
+.home-quote {
+  padding: $spacing-xl 0;
+  background-color: $color-white;
+
+  blockquote {
+    max-width: 720px;
+    margin: 0 auto;
+    border-left: 4px solid $color-accent;
+    padding-left: $spacing-lg;
+    font-size: 1.25rem;
+    line-height: 1.6;
+
+    p {
+      margin-bottom: $spacing-md;
+    }
+
+    cite {
+      display: block;
+      font-size: 0.875rem;
+      font-style: normal;
+      color: $color-text-light;
+    }
+  }
+}
+
+// NEH acknowledgment
+.home-neh {
+  padding: $spacing-lg 0 $spacing-xl;
+}
+
+.neh-acknowledgment {
+  display: flex;
+  align-items: center;
+  gap: $spacing-lg;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: $spacing-lg;
+  border: 1px solid $color-border;
+  border-radius: 4px;
+
+  p {
+    font-size: 0.9375rem;
+    color: $color-text-light;
+    margin: 0;
+  }
+}
+
+.neh-seal {
+  width: 100px;
+  flex-shrink: 0;
+}
+
+// Responsive
+@media (max-width: $breakpoint-mobile) {
+  .hero {
+    min-height: 50vh;
+  }
+
+  .hero-title {
+    font-size: 2.25rem;
+  }
+
+  .hero-tagline {
+    font-size: 1.125rem;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+    gap: $spacing-md;
+  }
+
+  .home-quote blockquote {
+    font-size: 1.1rem;
+  }
+
+  .neh-acknowledgment {
+    flex-direction: column;
+    text-align: center;
+  }
+}

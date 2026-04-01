@@ -16,6 +16,10 @@ body {
   padding-top: calc(#{$nav-height} + #{$spacing-xl});
   padding-bottom: $spacing-xl;
   min-height: 60vh;
+
+  &--home {
+    padding-top: 0;
+  }
 }
 
 img {
@@ -56,5 +60,65 @@ img {
   h1 {
     font-size: 2.25rem;
     color: $color-primary;
+  }
+}
+
+// About page photo
+.about-photo {
+  margin: $spacing-lg 0;
+  border-radius: 4px;
+}
+
+// Team grid
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $spacing-xl $spacing-lg;
+  margin-top: $spacing-lg;
+}
+
+.team-member {
+  img {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: $spacing-md;
+  }
+
+  h3 {
+    margin-bottom: $spacing-sm;
+    color: $color-primary;
+  }
+
+  p {
+    font-size: 0.9375rem;
+    color: $color-text-light;
+  }
+}
+
+// History page figures
+figure.history-photo {
+  margin: $spacing-xl 0;
+
+  img {
+    border-radius: 4px;
+  }
+
+  figcaption {
+    margin-top: $spacing-sm;
+    font-size: 0.875rem;
+    color: $color-text-light;
+    font-style: italic;
+  }
+}
+
+@media (max-width: $breakpoint-mobile) {
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .team-member {
+    text-align: center;
   }
 }

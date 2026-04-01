@@ -29,3 +29,5 @@ exclude:
   - Gemfile.lock
   - vendor
   - migration-plan.md
+  - "*.xml"
+  - wp-uploads
