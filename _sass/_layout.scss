@@ -1,4 +1,6 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -33,7 +35,8 @@ img {
   color: $color-white;
   padding: $spacing-lg 0;
   text-align: center;
-  font-size: 0.875rem;
+  font-size: 0.9rem;
+  padding: $spacing-md 0;
 
   p {
     margin-bottom: $spacing-sm;

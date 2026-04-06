@@ -67,7 +67,9 @@
   border-radius: 4px;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.2s, transform 0.2s;
+  transition:
+    box-shadow 0.2s,
+    transform 0.2s;
 
   &:hover {
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
@@ -136,7 +138,7 @@
 
 // NEH acknowledgment
 .home-neh {
-  padding: $spacing-lg 0 $spacing-xl;
+  padding: $spacing-lg 0 $spacing-lg;
 }
 
 .neh-acknowledgment {
