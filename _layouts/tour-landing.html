@@ -7,7 +7,41 @@ layout: default
     <header class="page-header">
       <h1>{{ page.title }}</h1>
     </header>
+
     {{ content }}
-    <!-- Tour grid, audio player, and podcast links will be added in Phase 3 -->
+
+    {% if page.audio_embed and page.audio_embed != "" %}
+    <section class="tour-full-audio">
+      <h2>Listen to the Full Tour</h2>
+      {% include audio-player.html embed_url=page.audio_embed %}
+    </section>
+    {% endif %}
+
+    {% include podcast-links.html %}
+
+    <section class="tour-stops">
+      <h2>Tour Stops</h2>
+      <div class="tour-grid">
+        {% assign stops = site.pages | where: "layout", "tour-episode" | sort: "stop_number" %}
+        {% for stop in stops %}
+        <a href="{{ stop.url | relative_url }}" class="tour-stop-card">
+          <div class="stop-number">{{ stop.stop_number }}</div>
+          <h3>{{ stop.title }}</h3>
+          {% if stop.duration and stop.duration != "" %}
+          <span class="stop-duration">{{ stop.duration }}</span>
+          {% endif %}
+        </a>
+        {% endfor %}
+      </div>
+    </section>
+
+    {% if page.map_embed and page.map_embed != "" %}
+    <section class="tour-map">
+      <h2>Tour Map</h2>
+      <div class="map-embed">
+        <iframe src="{{ page.map_embed }}" width="100%" height="480" frameborder="0" style="border:0" allowfullscreen title="Tour stop locations map"></iframe>
+      </div>
+    </section>
+    {% endif %}
   </article>
 </div>

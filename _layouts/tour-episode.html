@@ -5,14 +5,77 @@ layout: default
 <div class="container">
   <article class="page-content tour-episode">
     <header class="page-header">
+      <p class="episode-label"><a href="{{ '/tour/' | relative_url }}">Tour</a> &rsaquo; Stop {{ page.stop_number }}</p>
       <h1>{{ page.title }}</h1>
-      {% if page.duration %}<p class="episode-duration">{{ page.duration }}</p>{% endif %}
+      {% if page.duration and page.duration != "" %}
+      <p class="episode-duration">{{ page.duration }}</p>
+      {% endif %}
     </header>
 
-    <!-- Audio embed, images, location map will be added in Phase 3 -->
+    {% if page.audio_embed and page.audio_embed != "" %}
+    <section class="episode-audio">
+      {% include audio-player.html embed_url=page.audio_embed %}
+    </section>
+    {% endif %}
 
-    {{ content }}
+    {% if page.images and page.images.size > 0 %}
+    <section class="episode-images">
+      {% for image in page.images %}
+      {% if image.src and image.src != "" %}
+      <figure>
+        <img src="{{ image.src | relative_url }}" alt="{{ image.alt }}">
+        {% if image.caption and image.caption != "" %}
+        <figcaption>{{ image.caption }}</figcaption>
+        {% endif %}
+      </figure>
+      {% endif %}
+      {% endfor %}
+    </section>
+    {% endif %}
 
-    <!-- Prev/next navigation will be added in Phase 3 -->
+    <section class="episode-content">
+      {{ content }}
+    </section>
+
+    {% if page.location and page.location.name and page.location.name != "" %}
+    <section class="episode-location">
+      <p class="location-name"><strong>Location:</strong> {{ page.location.name }}{% if page.location.address and page.location.address != "" %} &mdash; {{ page.location.address }}{% endif %}</p>
+      {% if page.location.lat and page.location.lng %}
+      <p><a href="https://www.google.com/maps?q={{ page.location.lat }},{{ page.location.lng }}" target="_blank" rel="noopener">View on Google Maps</a></p>
+      {% endif %}
+    </section>
+    {% endif %}
+
+    <nav class="episode-nav" aria-label="Tour stop navigation">
+      {% assign stops = site.pages | where: "layout", "tour-episode" | sort: "stop_number" %}
+      {% assign prev_num = page.stop_number | minus: 1 %}
+      {% assign next_num = page.stop_number | plus: 1 %}
+      {% assign prev_stop = nil %}
+      {% assign next_stop = nil %}
+      {% for stop in stops %}
+        {% if stop.stop_number == prev_num %}
+          {% assign prev_stop = stop %}
+        {% endif %}
+        {% if stop.stop_number == next_num %}
+          {% assign next_stop = stop %}
+        {% endif %}
+      {% endfor %}
+
+      <div class="episode-nav-links">
+        {% if prev_stop %}
+        <a href="{{ prev_stop.url | relative_url }}" class="nav-prev">&larr; Stop {{ prev_stop.stop_number }}</a>
+        {% else %}
+        <span class="nav-prev"></span>
+        {% endif %}
+
+        <a href="{{ '/tour/' | relative_url }}" class="nav-all">All Stops</a>
+
+        {% if next_stop %}
+        <a href="{{ next_stop.url | relative_url }}" class="nav-next">Stop {{ next_stop.stop_number }} &rarr;</a>
+        {% else %}
+        <span class="nav-next"></span>
+        {% endif %}
+      </div>
+    </nav>
   </article>
 </div>

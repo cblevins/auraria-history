@@ -1,6 +1,7 @@
 ---
 layout: page
 title: History
+permalink: /history/
 ---
 
 In 1972, the city of Denver displaced a largely Chicano/a neighborhood in order to build a new university campus, the Auraria Higher Education Center. Neighborhood residents and community organizations resisted the city's Housing and Urban Development Agency, but ultimately Denver voters gave the agency authority to clear the city's oldest neighborhood and pave the way for the construction of the campus. It was not Auraria's first episode of displacement. Indigenous peoples, including groups of Cheyenne, Arapaho, and Ute, had lived on this land for centuries. Miners occupied their territory in 1858, establishing the Auraria Town Company and touching off a gold rush that violently displaced the area's Indigenous inhabitants. Built on a legacy of displacement, the Auraria campus is now home to Community College of Denver, Metro State University, and the University of Colorado Denver.

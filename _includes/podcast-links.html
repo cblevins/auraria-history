@@ -1,3 +1,27 @@
-<!-- Podcast platform links component — Phase 3 implementation
-     Reads from site.podcast config (spotify_url, apple_url, soundcloud_url, rss_url)
-     Renders badge-style "Listen on" links for each configured platform -->
+{% if site.podcast.spotify_url != "" or site.podcast.apple_url != "" or site.podcast.soundcloud_url != "" or site.podcast.rss_url != "" %}
+<div class="podcast-links">
+  <h3>Listen on</h3>
+  <div class="podcast-badges">
+    {% if site.podcast.spotify_url != "" %}
+    <a href="{{ site.podcast.spotify_url }}" class="podcast-badge" target="_blank" rel="noopener">
+      <span class="badge-icon">&#9658;</span> Spotify
+    </a>
+    {% endif %}
+    {% if site.podcast.apple_url != "" %}
+    <a href="{{ site.podcast.apple_url }}" class="podcast-badge" target="_blank" rel="noopener">
+      <span class="badge-icon">&#9658;</span> Apple Podcasts
+    </a>
+    {% endif %}
+    {% if site.podcast.soundcloud_url != "" %}
+    <a href="{{ site.podcast.soundcloud_url }}" class="podcast-badge" target="_blank" rel="noopener">
+      <span class="badge-icon">&#9658;</span> SoundCloud
+    </a>
+    {% endif %}
+    {% if site.podcast.rss_url != "" %}
+    <a href="{{ site.podcast.rss_url }}" class="podcast-badge" target="_blank" rel="noopener">
+      <span class="badge-icon">&#9632;</span> RSS Feed
+    </a>
+    {% endif %}
+  </div>
+</div>
+{% endif %}
