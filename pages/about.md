@@ -25,19 +25,19 @@ _Recovering Auraria's Past is made possible by a Humanities Initiative at Colleg
 <div class="team-member">
   <img src="{{ '/assets/images/headshot-blevins.png' | relative_url }}" alt="Cameron Blevins">
   <h3>Cameron Blevins</h3>
-  <p><a href="cblevins.github.io">Cameron Blevins</a> is Associate Teaching Professor in the History Department and Director of Digital Initiatives for the College of Liberal Arts and Sciences at the University of Colorado Denver. He is overseeing the technical development of the project's walking tour and project website.</p>
+  <p><a href="https://cblevins.github.io">Cameron Blevins</a> is Associate Teaching Professor in the History Department and Director of Digital Initiatives for the College of Liberal Arts and Sciences at the University of Colorado Denver. He is overseeing the technical development of the project's walking tour and project website.</p>
 </div>
 
 <div class="team-member">
   <img src="{{ '/assets/images/headshot-comstock.jpg' | relative_url }}" alt="Michelle Comstock">
   <h3>Michelle Comstock</h3>
-  <p>Dr. Michelle Comstock is an associate professor of Writing, Rhetoric, and Technology in the Department of English at CU Denver. Her research, which is informed by scholarship in sonic rhetoric, cultural studies, and the environmental humanities, examines how sound mediates our experiences of self, community, and the natural environment. As media lead for this project, Dr. Comstock will ensure students and designated faculty have access to resources and training in multimedia production, particularly sonic media production.</p>
+  <p>Dr. Michelle Comstock is an associate professor of Writing, Rhetoric, and Technology in the Department of English and faculty fellow of community partnerships at CU Denver. Her research, which is informed by scholarship in sonic rhetoric, cultural studies, and the environmental humanities, examines how sound mediates our experiences of self, community, and the natural environment. As co-PI for this project, Dr. Comstock assisted the team in archival research, audio script writing, and some sound production. </p>
 </div>
 
 <div class="team-member">
-  <img src="{{ '/assets/images/headshot-gross.jpg' | relative_url }}" alt="Rachel Gross">
+  <img src="{{ '/assets/images/headshot-gross-2.png' | relative_url }}" alt="Rachel Gross">
   <h3>Rachel Gross</h3>
-  <p>Rachel S. Gross is Associate Professor of History at CU Denver and a member of the NEH grant team, "Recovering Auraria's Past." As a public historian, she works with community groups, teaches students about how to research and commemorate the past, and participates in campus-wide efforts to expand awareness of the historical Auraria neighborhood.</p>
+  <p><a href="https://rachel-gross.com/">Rachel S. Gross</a> is Associate Professor of History at CU Denver and a member of the NEH grant team, "Recovering Auraria's Past." As a public historian, she works with community groups, teaches students about how to research and commemorate the past, and participates in campus-wide efforts to expand awareness of the historical Auraria neighborhood.</p>
 </div>
 
 </div>
@@ -49,19 +49,19 @@ _Recovering Auraria's Past is made possible by a Humanities Initiative at Colleg
 <div class="team-member">
   <img src="{{ '/assets/images/headshot-imperioli.jpeg' | relative_url }}" alt="Sophia Imperioli">
   <h3>Sophia Imperioli</h3>
-  <p>Sophia Imperioli is a Graduate Student of Public History at the University of Colorado Denver. She contributed to the project's website and research for the audio tour.</p>
+  <p>Sophia Imperioli was a Graduate Student of Public History at the University of Colorado Denver. She contributed to the project's initial website and research for the audio tour.</p>
 </div>
 
 <div class="team-member">
-  <img src="{{ '/assets/images/headshot-placeholder.svg' | relative_url }}" alt="Krista Marks">
+  <img src="{{ '/assets/images/headshot-marks.jpg' | relative_url }}" alt="Krista Marks">
   <h3>Krista Marks</h3>
-  <p>Krista Marks is a Graduate Student of Public History at the University of Colorado Denver. She contributed research along with recording and editing the audio tour.</p>
+  <p>Krista Marks was a Graduate Student of Public History at the University of Colorado Denver. She contributed research and was co-lead on recording and editing the audio tour.</p>
 </div>
 
 <div class="team-member">
   <img src="{{ '/assets/images/headshot-placeholder.svg' | relative_url }}" alt="Indira Saha">
   <h3>Indira Saha</h3>
-  <p>Indira Saha is a Graduate Student of Public History at the University of Colorado Denver. She contributed research along with recording and editing the audio tour.</p>
+  <p>Indira Saha was a Graduate Student of Public History at the University of Colorado Denver. She contributed research and was co-lead on recording and editing the audio tour.</p>
 </div>
 
 </div>
