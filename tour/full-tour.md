@@ -15,4 +15,4 @@ location:
 duration: ""
 ---
 
-Listent to the full audio tour here.
+Listen to the full audio tour here.

@@ -6,11 +6,11 @@ permalink: /about/
 
 ## About the Project
 
-"Recovering Auraria's Past" is a collaborative project with faculty and community members designed to share the history of the Old Westside neighborhood of Auraria, in Denver, Colorado. The current Auraria campus was built in the 1970s through the razing of this neighborhood and the displacement of over 300 families. This project works in collaboration with displaced residents and their descendants to tell their history and stories through an audio walking tour of the neighborhood.
+"Listening to Auraria's Past" is a collaborative project with faculty and community members designed to share the history of the Old Westside neighborhood of Auraria, in Denver, Colorado. The current Auraria campus was built in the 1970s through the razing of this neighborhood and the displacement of over 300 families. This project works in collaboration with displaced residents and their descendants to tell their history and stories through an audio walking tour of the neighborhood.
 
 Learn more about the [history of Auraria]({{site.baseurl}}/history/) or explore the [digital walking tour]({{site.baseurl}}/tour/). Contact [Dr. Rachel Gross](mailto:{{ site.contact_email }}) for more information about the project.
 
-_Recovering Auraria's Past is made possible by a Humanities Initiative at Colleges and Universities grant from the National Endowment for the Humanities, with additional support from Nolbert D. Chavez, Chief Strategy Officer, University of Colorado Denver._
+_Listening to Auraria's Past is made possible by a Humanities Initiative at Colleges and Universities grant from the National Endowment for the Humanities, with additional support from Nolbert D. Chavez, Chief Strategy Officer, University of Colorado Denver._
 
 <!--
 <img src="{{ '/assets/images/golda-meir-house.jpg' | relative_url }}" alt="The Golda Meir House, one of the remaining historic structures on the Auraria campus" class="about-photo">
