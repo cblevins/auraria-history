@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Building drawing placeholder">
+  <rect width="400" height="400" fill="#efe9da"/>
+  <rect x="80" y="120" width="240" height="220" fill="none" stroke="#5a544a" stroke-width="3"/>
+  <polygon points="60,120 200,40 340,120" fill="none" stroke="#5a544a" stroke-width="3"/>
+  <rect x="180" y="240" width="40" height="100" fill="none" stroke="#5a544a" stroke-width="2"/>
+  <rect x="110" y="160" width="50" height="50" fill="none" stroke="#5a544a" stroke-width="2"/>
+  <rect x="240" y="160" width="50" height="50" fill="none" stroke="#5a544a" stroke-width="2"/>
+  <text x="200" y="380" font-family="Georgia, serif" font-size="14" fill="#7a7264" text-anchor="middle" font-style="italic">building drawing &mdash; placeholder</text>
+</svg>

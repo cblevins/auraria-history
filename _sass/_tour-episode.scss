@@ -1,0 +1,397 @@
+@charset "UTF-8";
+
+// =============================================================================
+// Tour episode page (single tour stop)
+// -----------------------------------------------------------------------------
+// One styling document for everything that renders inside the
+// `tour-episode` Jekyll layout. Per-stop variation is driven entirely by
+// the frontmatter in `tour/stop-NN.md`; this file only owns the visual
+// shell.
+//
+// Frontmatter schema for each stop file (all optional except the first
+// three; the layout supplies sensible placeholder defaults for the rest):
+//
+//   layout: tour-episode          # required
+//   title: "Stop N"               # required - display title
+//   stop_number: N                # required - drives audio URL & nav
+//   permalink: /tour/stop-NN/     # required for pretty URLs
+//
+//   location_label:    "1015 9th St."                       # text shown for the address link
+//   location_address:  "1015 9th St., Denver, CO 80204"     # used for Google Maps search
+//   location_lat:      39.744521                            # Leaflet marker lat
+//   location_lng:      -105.005983                          # Leaflet marker lng
+//
+//   perspective_image: "/assets/images/stop-NN-start.jpeg"    # Starting View tab
+//   thumbnail_image:   "/assets/images/stop-NN-drawing-icon.jpg"  # circular header icon
+//
+//   transcript: |                 # multi-line markdown; if absent, layout shows placeholder
+//     First paragraph...
+//
+// Audio is auto-derived from `stop_number` -> archive.org/.../stop-NN.mp3.
+//
+// Component map (keep in sync with `_layouts/tour-episode.html`):
+//   .episode-header              page header row (icon + title + address)
+//     .episode-thumb-icon        circular building-drawing icon
+//     .episode-header-text       breadcrumb / h1 / location line wrapper
+//     .episode-location-line     ---  pin-icon + address link
+//   .stop-nav                    tabs widget: Starting View / Map
+//     .stop-nav-tabs             tab buttons (ARIA tablist)
+//     .stop-nav-panel            tab panel (one per tab)
+//       .panel-view-image        clickable photo (opens lightbox)
+//       #panel-map .leaflet-map  Leaflet map
+//     .stop-nav-caption          one-line caption under either panel
+//   .episode-audio               HTML5 audio player section
+//     .episode-audio-player      <audio> element (full-width)
+//     .episode-audio-meta        small "Hosted on ..." line
+//   .transcript-details          collapsible <details> transcript
+//   .episode-content             optional markdown body (post-frontmatter)
+//   .episode-nav                 prev / all stops / next
+//   .lightbox                    full-screen image modal (shared)
+// =============================================================================
+
+// ---------- Tunable variables (all visual sizing lives here) -----------------
+
+$orientation-card-height: 280px; // height of photo and map cards
+$episode-icon-size: 72px; // circular header icon
+$lightbox-img-max-w: 95vw;
+$lightbox-img-max-h: 90vh;
+
+// ---------- Page header ------------------------------------------------------
+
+.episode-header {
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-md;
+}
+
+.episode-thumb-icon {
+  width: $episode-icon-size;
+  height: $episode-icon-size;
+  flex: 0 0 $episode-icon-size;
+  border: 1px solid $color-border;
+  border-radius: 50%;
+  background-color: $color-white;
+  object-fit: cover;
+}
+
+.episode-header-text {
+  flex: 1 1 auto;
+}
+
+.episode-label {
+  font-size: 1rem;
+  color: $color-text-light;
+  margin-bottom: $spacing-sm;
+
+  a {
+    color: $color-primary;
+  }
+}
+
+.episode-duration {
+  font-size: 0.9375rem;
+  color: $color-text-light;
+  margin-top: 0;
+}
+
+.episode-location-line {
+  font-size: 1rem;
+  margin-top: $spacing-sm;
+
+  .episode-location-icon {
+    margin-right: 0.25rem;
+  }
+
+  .episode-location-link {
+    font-weight: 600;
+    color: $color-primary;
+    text-decoration: underline;
+  }
+}
+
+// ---------- Section heading utility ------------------------------------------
+
+.episode-section-h {
+  font-size: 1.125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: $color-text-light;
+  margin-bottom: $spacing-md;
+}
+
+// ---------- Orientation block (photo + map, side by side) --------------------
+
+.stop-orientation {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $spacing-md;
+  margin: 0 0 $spacing-xl;
+  align-items: start;
+}
+
+.orientation-photo,
+.orientation-map {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid $color-border;
+  border-radius: 6px;
+  overflow: hidden;
+  background: $color-white;
+}
+
+.orientation-photo__trigger {
+  display: block;
+  padding: 0;
+  border: 0;
+  background: #1c1c1c; // dark letterbox behind full-fit photo
+  cursor: zoom-in;
+  line-height: 0; // collapse inline gap under img
+
+  img {
+    display: block;
+    width: 100%;
+    height: $orientation-card-height;
+    object-fit: contain; // full photo visible, no cropping
+  }
+
+  &:hover img,
+  &:focus-visible img {
+    opacity: 0.88;
+  }
+
+  &:focus-visible {
+    outline: 3px solid $color-primary;
+    outline-offset: -3px;
+  }
+}
+
+.orientation-map .leaflet-map {
+  height: $orientation-card-height;
+  width: 100%;
+  z-index: 0;
+}
+
+.orientation-caption {
+  margin: 0;
+  padding: $spacing-sm $spacing-md;
+  font-size: 1rem;
+  color: $color-text-light;
+  //font-style: italic;
+  border-top: 1px solid $color-border;
+  text-align: center;
+
+  a {
+    color: $color-text-light;
+    text-decoration: underline;
+    &:hover {
+      color: $color-primary;
+    }
+  }
+}
+
+// Leaflet container base (used outside orientation block too)
+.leaflet-map {
+  width: 100%;
+  z-index: 0;
+}
+
+// ---------- Audio + streaming links group ------------------------------------
+
+.episode-listen-group {
+  padding: $spacing-md $spacing-lg;
+  border: 1px solid $color-border;
+  border-radius: 6px;
+  background: $color-white;
+  margin-bottom: $spacing-xl;
+
+  // Pull the streaming icons up tight against the download/meta line
+  .episode-listen {
+    margin-top: $spacing-sm;
+    margin-bottom: 0;
+  }
+}
+
+.episode-audio-player {
+  width: 100%;
+  display: block;
+  accent-color: $color-primary; // tints native play button, scrubber, thumb
+}
+
+// ---------- Transcript (collapsible) -----------------------------------------
+
+.transcript-details {
+  border: 1px solid $color-border;
+  border-radius: 4px;
+  background-color: $color-white;
+  margin-bottom: $spacing-xl;
+
+  summary {
+    cursor: pointer;
+    padding: $spacing-md $spacing-lg;
+    font-weight: 600;
+    color: $color-primary;
+    user-select: none;
+
+    &:hover {
+      color: darken($color-primary, 10%);
+    }
+  }
+
+  &[open] summary {
+    border-bottom: 1px solid $color-border;
+  }
+
+  .transcript-body {
+    padding: $spacing-md $spacing-lg;
+
+    p {
+      margin: 0 0 $spacing-md 0;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+// ---------- Optional body content + legacy image gallery ---------------------
+
+.episode-content {
+  margin-bottom: $spacing-xl;
+}
+
+.episode-images {
+  margin-bottom: $spacing-xl;
+
+  figure {
+    margin: 0 0 $spacing-lg 0;
+
+    img {
+      border-radius: 4px;
+      width: 100%;
+    }
+
+    figcaption {
+      margin-top: $spacing-sm;
+      font-size: 0.875rem;
+      color: $color-text-light;
+      font-style: italic;
+    }
+  }
+}
+
+// Legacy "boxed location" panel - retained for back-compat in case any
+// stop still uses it before all are migrated to the tabs widget.
+.episode-location {
+  margin-bottom: $spacing-xl;
+  padding: $spacing-md $spacing-lg;
+  background-color: $color-white;
+  border: 1px solid $color-border;
+  border-radius: 4px;
+
+  p {
+    margin: 0;
+    & + p {
+      margin-top: $spacing-sm;
+    }
+  }
+}
+
+// ---------- Prev / next navigation -------------------------------------------
+
+.episode-nav {
+  margin-top: $spacing-xl;
+  padding-top: $spacing-lg;
+  border-top: 1px solid $color-border;
+}
+
+.episode-nav-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  a {
+    text-decoration: none;
+    font-weight: 600;
+    color: $color-primary;
+
+    &:hover {
+      color: darken($color-primary, 10%);
+    }
+  }
+
+  .nav-prev,
+  .nav-next {
+    min-width: 80px;
+  }
+
+  .nav-prev {
+    text-align: left;
+  }
+  .nav-next {
+    text-align: right;
+  }
+
+  .nav-all {
+    font-size: 1.1rem;
+    color: $color-text-light;
+  }
+}
+
+// ---------- Lightbox modal (shared by any .lightbox-trigger) -----------------
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: $spacing-lg;
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.lightbox-img {
+  max-width: $lightbox-img-max-w;
+  max-height: $lightbox-img-max-h;
+  border-radius: 4px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: $spacing-md;
+  right: $spacing-md;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 0;
+  background: rgba(255, 255, 255, 0.9);
+  color: #000;
+  font-size: 1.75rem;
+  line-height: 1;
+  cursor: pointer;
+
+  &:hover {
+    background: #fff;
+  }
+  &:focus-visible {
+    outline: 3px solid $color-primary;
+    outline-offset: 2px;
+  }
+}
+
+body.lightbox-open {
+  overflow: hidden;
+}
+
+// ---------- Responsive -------------------------------------------------------
+
+@media (max-width: $breakpoint-mobile) {
+  .stop-orientation {
+    grid-template-columns: 1fr;
+  }
+}

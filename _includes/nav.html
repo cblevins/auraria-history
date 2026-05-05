@@ -5,10 +5,10 @@
       <span class="hamburger"></span>
     </button>
     <ul class="nav-links">
-      <li><a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active" aria-current="page"{% endif %}>Home</a></li>
-      <li><a href="{{ '/about/' | relative_url }}" {% if page.url contains '/about' %}class="active" aria-current="page"{% endif %}>About</a></li>
-      <li><a href="{{ '/history/' | relative_url }}" {% if page.url contains '/history' %}class="active" aria-current="page"{% endif %}>History</a></li>
-      <li><a href="{{ '/tour/' | relative_url }}" {% if page.url contains '/tour' %}class="active" aria-current="page"{% endif %}>Tour</a></li>
+      <li><a href="{{ '/' | relative_url }}" {% if page.url == '/' %}aria-current="page"{% endif %}>Home</a></li>
+      <li><a href="{{ '/tour/' | relative_url }}" {% if page.url contains '/tour/' %}aria-current="page"{% endif %}>Tour</a></li>
+      <li><a href="{{ '/history/' | relative_url }}" {% if page.url contains '/history/' %}aria-current="page"{% endif %}>History</a></li>
+      <li><a href="{{ '/about/' | relative_url }}" {% if page.url contains '/about/' %}aria-current="page"{% endif %}>About</a></li>
     </ul>
   </div>
 </nav>

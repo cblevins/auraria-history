@@ -3,23 +3,27 @@
   <h3>Listen on</h3>
   <div class="podcast-badges">
     {% if site.podcast.spotify_url != "" %}
-    <a href="{{ site.podcast.spotify_url }}" class="podcast-badge" target="_blank" rel="noopener">
-      <span class="badge-icon">&#9658;</span> Spotify
+    <a href="{{ site.podcast.spotify_url }}" class="podcast-badge podcast-badge--spotify" target="_blank" rel="noopener" aria-label="Listen on Spotify">
+      <i class="fa-brands fa-spotify" aria-hidden="true"></i>
+      <span>Spotify</span>
     </a>
     {% endif %}
     {% if site.podcast.apple_url != "" %}
-    <a href="{{ site.podcast.apple_url }}" class="podcast-badge" target="_blank" rel="noopener">
-      <span class="badge-icon">&#9658;</span> Apple Podcasts
+    <a href="{{ site.podcast.apple_url }}" class="podcast-badge podcast-badge--apple" target="_blank" rel="noopener" aria-label="Listen on Apple Podcasts">
+      <i class="fa-brands fa-apple" aria-hidden="true"></i>
+      <span>Apple Podcasts</span>
     </a>
     {% endif %}
     {% if site.podcast.soundcloud_url != "" %}
-    <a href="{{ site.podcast.soundcloud_url }}" class="podcast-badge" target="_blank" rel="noopener">
-      <span class="badge-icon">&#9658;</span> SoundCloud
+    <a href="{{ site.podcast.soundcloud_url }}" class="podcast-badge podcast-badge--soundcloud" target="_blank" rel="noopener" aria-label="Listen on SoundCloud">
+      <i class="fa-brands fa-soundcloud" aria-hidden="true"></i>
+      <span>SoundCloud</span>
     </a>
     {% endif %}
     {% if site.podcast.rss_url != "" %}
-    <a href="{{ site.podcast.rss_url }}" class="podcast-badge" target="_blank" rel="noopener">
-      <span class="badge-icon">&#9632;</span> RSS Feed
+    <a href="{{ site.podcast.rss_url }}" class="podcast-badge podcast-badge--rss" target="_blank" rel="noopener" aria-label="Subscribe via RSS">
+      <i class="fa-solid fa-rss" aria-hidden="true"></i>
+      <span>RSS Feed</span>
     </a>
     {% endif %}
   </div>

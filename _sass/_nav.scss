@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .site-nav {
   background-color: $color-primary;
   position: fixed;
@@ -41,7 +42,7 @@
     transition: border-color 0.2s, color 0.2s;
 
     &:hover,
-    &.active {
+    &[aria-current] {
       border-bottom-color: $color-accent;
     }
   }

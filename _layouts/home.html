@@ -2,19 +2,20 @@
 layout: default
 ---
 
-<section class="hero" style="background-image: url('{{ '/assets/images/hero-golda-meir-house.jpg' | relative_url }}');">
+<section
+  class="hero"
+  style="background-image: url('{{ '/assets/images/hero-golda-meir-house.jpg' | relative_url }}');"
+>
   <div class="hero-overlay">
     <div class="container">
-      <h1 class="hero-title">Recovering Auraria's Past</h1>
+      <h1 class="hero-title">Listening to Auraria's Past</h1>
       <p class="hero-tagline">{{ site.description }}</p>
     </div>
   </div>
 </section>
 
 <section class="home-intro">
-  <div class="container">
-    {{ content }}
-  </div>
+  <div class="container">{{ content }}</div>
 </section>
 
 <section class="home-cards">
@@ -22,29 +23,47 @@ layout: default
     <div class="card-grid">
       <a href="{{ '/about/' | relative_url }}" class="card">
         <div class="card-image">
-          <img src="{{ '/assets/images/section-about.jpg' | relative_url }}" alt="Covered walkway on the Auraria campus">
+          <img
+            src="{{ '/assets/images/section-about.jpg' | relative_url }}"
+            alt="Covered walkway on the Auraria campus"
+          />
         </div>
         <div class="card-body">
           <h2>About the Project</h2>
-          <p>Learn about our team and the NEH-funded initiative to recover Auraria's history.</p>
+          <p>
+            Learn about our team and the NEH-funded initiative to recover
+            Auraria's history.
+          </p>
         </div>
       </a>
       <a href="{{ '/history/' | relative_url }}" class="card">
         <div class="card-image">
-          <img src="{{ '/assets/images/section-history.jpg' | relative_url }}" alt="St. Cajetan's Church in the Auraria neighborhood">
+          <img
+            src="{{ '/assets/images/section-history.jpg' | relative_url }}"
+            alt="St. Cajetan's Church in the Auraria neighborhood"
+          />
         </div>
         <div class="card-body">
           <h2>History</h2>
-          <p>Explore the history of Denver's Auraria neighborhood and its displaced community.</p>
+          <p>
+            Explore the history of Denver's Auraria neighborhood and its
+            displaced community.
+          </p>
         </div>
       </a>
       <a href="{{ '/tour/' | relative_url }}" class="card">
         <div class="card-image">
-          <img src="{{ '/assets/images/golda-meir-house.jpg' | relative_url }}" alt="The Golda Meir House on the Auraria campus">
+          <img
+            src="{{ '/assets/images/golda-meir-house.jpg' | relative_url }}"
+            alt="The Golda Meir House on the Auraria campus"
+          />
         </div>
         <div class="card-body">
           <h2>Walking Tour</h2>
-          <p>Experience a digital walking tour of the historic Auraria neighborhood.</p>
+          <p>
+            Experience a digital walking tour of the historic Auraria
+            neighborhood.
+          </p>
         </div>
       </a>
     </div>
@@ -54,8 +73,16 @@ layout: default
 <section class="home-quote">
   <div class="container">
     <blockquote>
-      <p>"We started to feel more marginalized as we learned about the displacement and as people were labeling us 'blighted'.... I never thought of my neighborhood as being blighted."</p>
-      <cite>Frances Torres, Auraria Historical Advocacy Council Member &amp; Displaced Aurarian, Histories and Legacies of Displacement and Removal Symposium, September 28-29, 2022</cite>
+      <p>
+        "We started to feel more marginalized as we learned about the
+        displacement and as people were labeling us 'blighted'.... I never
+        thought of my neighborhood as being blighted."
+      </p>
+      <cite
+        >Frances Torres, Auraria Historical Advocacy Council Member &amp;
+        Displaced Aurarian, Histories and Legacies of Displacement and Removal
+        Symposium, September 28-29, 2022</cite
+      >
     </blockquote>
   </div>
 </section>
@@ -63,8 +90,16 @@ layout: default
 <section class="home-neh">
   <div class="container">
     <div class="neh-acknowledgment">
-      <img src="{{ '/assets/images/neh-seal.png' | relative_url }}" alt="National Endowment for the Humanities seal" class="neh-seal">
-      <p>Recovering Auraria's Past is made possible by a Humanities Initiative at Colleges and Universities grant from the National Endowment for the Humanities.</p>
+      <img
+        src="{{ '/assets/images/neh-seal.png' | relative_url }}"
+        alt="National Endowment for the Humanities seal"
+        class="neh-seal"
+      />
+      <p>
+        Recovering Auraria's Past is made possible by a Humanities Initiative at
+        Colleges and Universities grant from the National Endowment for the
+        Humanities.
+      </p>
     </div>
   </div>
 </section>

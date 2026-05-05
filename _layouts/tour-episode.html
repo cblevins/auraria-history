@@ -2,68 +2,143 @@
 layout: default
 ---
 
+{%- comment -%} Derive the zero-padded stop number for the audio URL {%-
+endcomment -%} {%- assign stop_padded = page.stop_number | prepend: '00' |
+slice: -2, 2 -%} {%- assign audio_url =
+'https://archive.org/download/listening-auraria-past/stop-' | append:
+stop_padded | append: '.mp3' -%} {%- comment -%} Defaults so individual stop
+files stay minimal {%- endcomment -%} {%- assign location_label =
+page.location_name | default: '' -%} {%- assign location_lat = page.location_lat
+| default: 39.7440 -%} {%- assign location_lng = page.location_lng | default:
+-105.0078 -%} {%- assign start_stem = '/assets/images/stop-images/stop-' | append: stop_padded | append: '-start.' -%}
+{%- assign drawing_stem = '/assets/images/stop-images/stop-' | append: stop_padded | append: '-drawing.' -%}
+{%- assign start_matches = site.static_files | where_exp: "f", "f.path contains start_stem" -%}
+{%- assign drawing_matches = site.static_files | where_exp: "f", "f.path contains drawing_stem" -%}
+{%- assign perspective_image = start_matches[0].path | default: '/assets/images/placeholder-perspective.svg' -%}
+{%- assign thumbnail_image = drawing_matches[0].path | default: '/assets/images/placeholder-thumbnail.svg' -%}
+
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+  crossorigin=""
+/>
+
 <div class="container">
   <article class="page-content tour-episode">
-    <header class="page-header">
-      <p class="episode-label"><a href="{{ '/tour/' | relative_url }}">Tour</a> &rsaquo; Stop {{ page.stop_number }}</p>
-      <h1>{{ page.title }}</h1>
-      {% if page.duration and page.duration != "" %}
-      <p class="episode-duration">{{ page.duration }}</p>
-      {% endif %}
+    <header class="page-header episode-header">
+      <img
+        class="episode-thumb-icon"
+        src="{{ thumbnail_image | relative_url }}"
+        alt="Icon for Stop {{ page.stop_number }}"
+      />
+      <div class="episode-header-text">
+        <p class="episode-label">
+          <a href="{{ '/tour/' | relative_url }}">Tour</a> &rsaquo; Stop {{
+          page.stop_number }}
+        </p>
+        <h1>{{ page.title }}</h1>
+        {% if location_label != "" %}
+        <p class="episode-location-line">
+          <span class="episode-location-icon" aria-hidden="true"
+            >&#x1F4CD;</span
+          >
+          <a
+            class="episode-location-link"
+            href="https://www.google.com/maps/search/?api=1&amp;query={{ location_lat }},{{ location_lng }}"
+            target="_blank"
+            rel="noopener"
+            >{{ location_label }}</a
+          >
+        </p>
+        {% endif %}
+      </div>
     </header>
 
-    {% if page.audio_embed and page.audio_embed != "" %}
-    <section class="episode-audio">
-      {% include audio-player.html embed_url=page.audio_embed %}
-    </section>
-    {% endif %}
+    <section class="stop-orientation" aria-label="Find this stop">
+      <div class="orientation-photo">
+        <button
+          type="button"
+          class="orientation-photo__trigger lightbox-trigger"
+          data-lightbox-src="{{ perspective_image | relative_url }}"
+          data-lightbox-alt="Starting view for Stop {{ page.stop_number }}"
+          aria-label="Enlarge starting view photo"
+        >
+          <img
+            src="{{ perspective_image | relative_url }}"
+            alt="Starting view for Stop {{ page.stop_number }}"
+            loading="lazy"
+          />
+        </button>
+        <p class="orientation-caption">Stand here to start</p>
+      </div>
 
-    {% if page.images and page.images.size > 0 %}
-    <section class="episode-images">
-      {% for image in page.images %}
-      {% if image.src and image.src != "" %}
-      <figure>
-        <img src="{{ image.src | relative_url }}" alt="{{ image.alt }}">
-        {% if image.caption and image.caption != "" %}
-        <figcaption>{{ image.caption }}</figcaption>
-        {% endif %}
-      </figure>
-      {% endif %}
-      {% endfor %}
+      <div class="orientation-map">
+        <div
+          id="stop-map"
+          class="leaflet-map"
+          data-lat="{{ location_lat }}"
+          data-lng="{{ location_lng }}"
+          data-label="{{ location_label | escape }}"
+          data-number="{{ page.stop_number }}"
+        ></div>
+        <p class="orientation-caption">
+          {% if location_label != "" %}
+          <a
+            href="https://www.google.com/maps/search/?api=1&amp;query={{ location_lat }},{{ location_lng }}"
+            target="_blank"
+            rel="noopener"
+            >Open in Google Maps</a
+          >
+          {% else %} Map {% endif %}
+        </p>
+      </div>
     </section>
-    {% endif %}
 
-    <section class="episode-content">
-      {{ content }}
+    <section class="episode-listen-group" aria-label="Audio for this stop">
+      <h2 class="episode-section-h">Listen</h2>
+      <audio controls preload="none" class="episode-audio-player">
+        <source src="{{ audio_url }}" type="audio/mpeg" />
+        Your browser does not support audio playback.
+        <a href="{{ audio_url }}">Download the MP3</a>.
+      </audio>
+      {% include episode-listen.html audio_url=audio_url %}
     </section>
 
-    {% if page.location and page.location.name and page.location.name != "" %}
-    <section class="episode-location">
-      <p class="location-name"><strong>Location:</strong> {{ page.location.name }}{% if page.location.address and page.location.address != "" %} &mdash; {{ page.location.address }}{% endif %}</p>
-      {% if page.location.lat and page.location.lng %}
-      <p><a href="https://www.google.com/maps?q={{ page.location.lat }},{{ page.location.lng }}" target="_blank" rel="noopener">View on Google Maps</a></p>
-      {% endif %}
+    <section class="episode-transcript" aria-label="Transcript">
+      <details class="transcript-details">
+        <summary>Transcript</summary>
+        <div class="transcript-body">
+          {% assign transcript_slug = page.slug | append: "-transcript" %} {%
+          assign transcript = site.transcripts | where: "slug", transcript_slug
+          | first %} {% if transcript %} {{ transcript.content | markdownify }}
+          {% elsif page.transcript and page.transcript != "" %} {{
+          page.transcript | markdownify }} {% else %}
+          <p>
+            <em>Transcript placeholder &mdash; full transcript forthcoming.</em>
+          </p>
+          {% endif %}
+        </div>
+      </details>
     </section>
+
+    {% if content and content != "" %}
+    <section class="episode-content">{{ content }}</section>
     {% endif %}
 
     <nav class="episode-nav" aria-label="Tour stop navigation">
-      {% assign stops = site.pages | where: "layout", "tour-episode" | sort: "stop_number" %}
-      {% assign prev_num = page.stop_number | minus: 1 %}
-      {% assign next_num = page.stop_number | plus: 1 %}
-      {% assign prev_stop = nil %}
-      {% assign next_stop = nil %}
-      {% for stop in stops %}
-        {% if stop.stop_number == prev_num %}
-          {% assign prev_stop = stop %}
-        {% endif %}
-        {% if stop.stop_number == next_num %}
-          {% assign next_stop = stop %}
-        {% endif %}
-      {% endfor %}
+      {% assign stops = site.stops | sort: "stop_number" %} {% assign prev_num =
+      page.stop_number | minus: 1 %} {% assign next_num = page.stop_number |
+      plus: 1 %} {% assign prev_stop = nil %} {% assign next_stop = nil %} {%
+      for stop in stops %} {% if stop.stop_number == prev_num %}{% assign
+      prev_stop = stop %}{% endif %} {% if stop.stop_number == next_num %}{%
+      assign next_stop = stop %}{% endif %} {% endfor %}
 
       <div class="episode-nav-links">
         {% if prev_stop %}
-        <a href="{{ prev_stop.url | relative_url }}" class="nav-prev">&larr; Stop {{ prev_stop.stop_number }}</a>
+        <a href="{{ prev_stop.url | relative_url }}" class="nav-prev"
+          >&larr; Stop {{ prev_stop.stop_number }}</a
+        >
         {% else %}
         <span class="nav-prev"></span>
         {% endif %}
@@ -71,7 +146,9 @@ layout: default
         <a href="{{ '/tour/' | relative_url }}" class="nav-all">All Stops</a>
 
         {% if next_stop %}
-        <a href="{{ next_stop.url | relative_url }}" class="nav-next">Stop {{ next_stop.stop_number }} &rarr;</a>
+        <a href="{{ next_stop.url | relative_url }}" class="nav-next"
+          >Stop {{ next_stop.stop_number }} &rarr;</a
+        >
         {% else %}
         <span class="nav-next"></span>
         {% endif %}
@@ -79,3 +156,91 @@ layout: default
     </nav>
   </article>
 </div>
+
+<div
+  id="lightbox"
+  class="lightbox"
+  hidden
+  role="dialog"
+  aria-modal="true"
+  aria-label="Enlarged image"
+>
+  <button type="button" class="lightbox-close" aria-label="Close">
+    &times;
+  </button>
+  <img class="lightbox-img" src="" alt="" />
+</div>
+
+<script>
+  (function () {
+    var lightbox = document.getElementById("lightbox");
+    if (!lightbox) return;
+    var imgEl = lightbox.querySelector(".lightbox-img");
+    var closeBtn = lightbox.querySelector(".lightbox-close");
+    var lastFocus = null;
+
+    function open(src, alt) {
+      lastFocus = document.activeElement;
+      imgEl.src = src;
+      imgEl.alt = alt || "";
+      lightbox.hidden = false;
+      document.body.classList.add("lightbox-open");
+      closeBtn.focus();
+    }
+    function close() {
+      lightbox.hidden = true;
+      imgEl.src = "";
+      document.body.classList.remove("lightbox-open");
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+
+    document.querySelectorAll(".lightbox-trigger").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        open(btn.dataset.lightboxSrc, btn.dataset.lightboxAlt);
+      });
+    });
+    closeBtn.addEventListener("click", close);
+    lightbox.addEventListener("click", function (e) {
+      // click on backdrop (not on the image itself) closes
+      if (e.target === lightbox) close();
+    });
+    document.addEventListener("keydown", function (e) {
+      if (!lightbox.hidden && e.key === "Escape") close();
+    });
+  })();
+</script>
+
+<script
+  src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+  crossorigin=""
+></script>
+<script>
+  (function () {
+    var el = document.getElementById("stop-map");
+    if (!el || typeof L === "undefined") return;
+    var lat = parseFloat(el.dataset.lat);
+    var lng = parseFloat(el.dataset.lng);
+    var label = el.dataset.label || "";
+    var number = el.dataset.number || "";
+    if (!isFinite(lat) || !isFinite(lng)) return;
+    var map = L.map(el, { scrollWheelZoom: false }).setView([lat, lng], 17);
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      maxZoom: 19,
+    }).addTo(map);
+    var icon = L.divIcon({
+      className: "tour-number-marker",
+      html: "<span>" + number + "</span>",
+      iconSize: [32, 32],
+      iconAnchor: [16, 16],
+    });
+    L.marker([lat, lng], { icon: icon })
+      .addTo(map)
+      .bindPopup(
+        "<strong>Stop " + number + (label ? ": " + label : "") + "</strong>",
+      );
+    window._stopMap = map;
+  })();
+</script>

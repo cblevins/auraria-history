@@ -1,11 +1,12 @@
 ---
 layout: tour-landing
-title: Walking Tour
+title: Audio Walking Tour
 permalink: /tour/
-audio_embed: ""
-map_embed: "https://www.google.com/maps/d/u/0/embed?mid=1ygI0m5sYyq_BiQxvTbVtZ8WKmEGM8SI&ehbc=2E312F"
+
+spotify_url: "https://open.spotify.com/show/7HQTn5K5Hg5RCDBihsG5X2"
+apple_url: "https://podcasts.apple.com/us/podcast/listening-to-aurarias-past/id1896254465"
+rss_url: "https://media.rss.com/listening-auraria-past/feed.xml"
+amazon_url: "https://music.amazon.com/podcasts/ce1c0e70-1a1e-4c7e-9109-cb805147e8b7"
 ---
 
-"Listening to Auraria's Past" is an audio tour of the historic Auraria neighborhood in Denver, Colorado. Written and produced by the project team and in collaboration with displaced Aurarian community members, the tour uses narration and oral history excerpts to tell the story of this neighborhood and the community that was displaced.
-
-The tour consists of 11 stops across the Auraria campus. You can listen to the full tour as a single episode, explore individual stops below, or subscribe on your favorite podcast platform to listen while walking the neighborhood.
+"Listening to Auraria's Past" is an audio walking tour of the historic Auraria neighborhood in Denver, Colorado. Written and produced by the project team in collaboration with displaced Aurarian community members, the tour uses narration and oral history excerpts to tell the story of this neighborhood and the community that was displaced. The walking tour consists of eleven stops located on the Auraria campus. You can walk along these stops while listening on your favorite podcast app or through our website.

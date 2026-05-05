@@ -6,15 +6,11 @@ permalink: /about/
 
 ## About the Project
 
-"Listening to Auraria's Past" is a collaborative project with faculty and community members designed to share the history of the Old Westside neighborhood of Auraria, in Denver, Colorado. The current Auraria campus was built in the 1970s through the razing of this neighborhood and the displacement of over 300 families. This project works in collaboration with displaced residents and their descendants to tell their history and stories through an audio walking tour of the neighborhood.
+_Listening to Auraria's Past_ is a collaborative project with faculty and community members designed to share the history of the Old Westside neighborhood of Auraria, in Denver, Colorado. The current Auraria campus was built in the 1970s through the razing of this neighborhood and the displacement of over 300 families. This project works in collaboration with displaced residents and their descendants to tell their history and stories through an audio walking tour of the neighborhood.
 
-Learn more about the [history of Auraria]({{site.baseurl}}/history/) or explore the [digital walking tour]({{site.baseurl}}/tour/). Contact [Dr. Rachel Gross](mailto:{{ site.contact_email }}) for more information about the project.
+Listen to the [audio tour]({{site.baseurl}}/tour/) or learn more about the [history of Auraria]({{site.baseurl}}/history/). Contact [Dr. Rachel Gross](mailto:{{ site.contact_email }}) for more information about the project.
 
-_Listening to Auraria's Past is made possible by a Humanities Initiative at Colleges and Universities grant from the National Endowment for the Humanities, with additional support from Nolbert D. Chavez, Chief Strategy Officer, University of Colorado Denver._
-
-<!--
-<img src="{{ '/assets/images/golda-meir-house.jpg' | relative_url }}" alt="The Golda Meir House, one of the remaining historic structures on the Auraria campus" class="about-photo">
--->
+_Listening to Auraria's Past was made possible by a Humanities Initiative at Colleges and Universities grant from the National Endowment for the Humanities, with additional support from Nolbert D. Chavez, Chief Strategy Officer, University of Colorado Denver._
 
 ## Team Members
 
@@ -55,7 +51,7 @@ _Listening to Auraria's Past is made possible by a Humanities Initiative at Coll
 <div class="team-member">
   <img src="{{ '/assets/images/headshot-marks.jpg' | relative_url }}" alt="Krista Marks">
   <h3>Krista Marks</h3>
-  <p>Krista Marks was a Graduate Student of Public History at the University of Colorado Denver. She contributed research and was co-lead on recording and editing the audio tour.</p>
+  <p>Krista Marks is a public history professional. In her graduate studies at CU Denver, she worked as a Walking Tour Guide with the Auraria Project, an Archival Assistant with Auraria Library, and the <a href="https://nam02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fhistory.denverlibrary.org%2Fnews%2Fdenver%2Fhistory-sun-valley-neighborhood">Wes Brown Map Intern</a> at the Denver Public Library, where she wrote a storymap history of the Sun Valley neighborhood. She has been working in collaboration with the Auraria Historical Advocacy Council and CU Denver faculty members to interpret Auraria’s History by co-leading the recording and editing of the audio tour.</p>
 </div>
 
 <div class="team-member">
@@ -71,19 +67,19 @@ _Listening to Auraria's Past is made possible by a Humanities Initiative at Coll
 <div class="team-grid" markdown="0">
 
 <div class="team-member">
-  <img src="{{ '/assets/images/headshot-placeholder.svg' | relative_url }}" alt="Sheila Perez-Kindle">
+  <img src="{{ '/assets/images/perez-kindle-headshot.jpg' | relative_url }}" alt="Sheila Perez-Kindle">
   <h3>Sheila Perez-Kindle</h3>
   <p>Sheila Perez-Kindle is a displaced Aurarian and member of the Auraria Historical Advocacy Council. She provided editorial oversight and helped create the overall vision of the audio tour, along with recording individual sections.</p>
 </div>
 
 <div class="team-member">
-  <img src="{{ '/assets/images/headshot-placeholder.svg' | relative_url }}" alt="Virginia Castro">
+  <img src="{{ '/assets/images/castro-headshot.png' | relative_url }}" alt="Virginia Castro">
   <h3>Virginia Castro</h3>
   <p>Virginia Castro is a displaced Aurarian and member of the Auraria Historical Advocacy Council. She provided editorial oversight and helped create the overall vision of the audio tour.</p>
 </div>
 
 <div class="team-member">
-  <img src="{{ '/assets/images/headshot-placeholder.svg' | relative_url }}" alt="Frances Torres">
+  <img src="{{ '/assets/images/torres-headshot.jpeg' | relative_url }}" alt="Frances Torres">
   <h3>Frances Torres</h3>
   <p>Frances Torres was a displaced Aurarian and member of the Auraria Historical Advocacy Council. She provided editorial oversight and helped create the overall vision of the audio tour.</p>
 </div>

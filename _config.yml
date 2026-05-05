@@ -13,6 +13,14 @@ podcast:
   soundcloud_url: ""
   rss_url: ""
 
+# Collections
+collections:
+  stops:
+    output: true
+    permalink: /tour/:name/
+  transcripts:
+    output: false
+
 # Build settings
 theme: null
 markdown: kramdown
@@ -25,6 +33,9 @@ sass:
 # Exclude from build
 exclude:
   - README.md
+  - SITEMAP.md
   - Gemfile
   - Gemfile.lock
   - vendor
+  # Raw high-res source images — keep in repo, not in published site
+  - assets/images/stop-01-drawing.jpeg

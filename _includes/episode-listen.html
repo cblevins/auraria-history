@@ -1,0 +1,72 @@
+<div class="episode-listen">
+  <div class="episode-listen__badges">
+    {% if page.spotify_url and page.spotify_url != "" %}
+    <a
+      href="{{ page.spotify_url }}"
+      class="podcast-badge podcast-badge--spotify"
+      target="_blank"
+      rel="noopener"
+      aria-label="Listen to {{ page.title }} on Spotify"
+    >
+      <i class="fa-brands fa-spotify" aria-hidden="true"></i>
+      <span>Spotify</span>
+    </a>
+    {% endif %} {% if page.apple_url and page.apple_url != "" %}
+    <a
+      href="{{ page.apple_url }}"
+      class="podcast-badge podcast-badge--apple"
+      target="_blank"
+      rel="noopener"
+      aria-label="Listen to {{ page.title }} on Apple Podcasts"
+    >
+      <i class="fa-brands fa-apple" aria-hidden="true"></i>
+      <span>Apple Podcasts</span>
+    </a>
+    {% endif %} {% if page.amazon_url and page.amazon_url != "" %}
+    <a
+      href="{{ page.amazon_url }}"
+      class="podcast-badge podcast-badge--amazon"
+      target="_blank"
+      rel="noopener"
+      aria-label="Listen to {{ page.title }} on Amazon Music"
+    >
+      <i class="fa-brands fa-amazon" aria-hidden="true"></i>
+      <span>Amazon Music</span>
+    </a>
+    {% endif %} {% if page.rss_url and page.rss_url != "" %}
+    <a
+      href="{{ page.rss_url }}"
+      class="podcast-badge podcast-badge--rss"
+      target="_blank"
+      rel="noopener"
+      aria-label="Subscribe via RSS"
+    >
+      <i class="fa-solid fa-rss" aria-hidden="true"></i>
+      <span>RSS</span>
+    </a>
+    {% endif %}
+    {% unless page.stop_number and page.stop_number < 12 %}
+    <a
+      href="https://archive.org/details/listening-auraria-past"
+      class="podcast-badge podcast-badge--archive"
+      target="_blank"
+      rel="noopener"
+      aria-label="Listen on the Internet Archive"
+    >
+      <i class="fa-solid fa-building-columns" aria-hidden="true"></i>
+      <span>Internet Archive</span>
+    </a>
+    {% endunless %}
+    {% if include.audio_url and include.audio_url != "" and page.stop_number and page.stop_number < 12 %}
+    <a
+      href="{{ include.audio_url }}"
+      class="podcast-badge podcast-badge--download"
+      download
+      aria-label="Download {{ page.title }} as MP3"
+    >
+      <i class="fa-solid fa-download" aria-hidden="true"></i>
+      <span>Download</span>
+    </a>
+    {% endif %}
+  </div>
+</div>
