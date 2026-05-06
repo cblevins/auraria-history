@@ -79,7 +79,7 @@ $lightbox-img-max-h: 90vh;
 }
 
 .episode-label {
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: $color-text-light;
   margin-bottom: $spacing-sm;
 
@@ -97,6 +97,7 @@ $lightbox-img-max-h: 90vh;
 .episode-location-line {
   font-size: 1.2rem;
   margin-top: $spacing-sm;
+  margin-bottom: 0.35rem;
   display: flex;
   align-items: center;
   gap: 0.35rem;
@@ -114,15 +115,16 @@ $lightbox-img-max-h: 90vh;
     }
   }
 
-  .episode-location-svg {
-    width: 1.1rem;
-    height: 1.1rem;
-    fill: currentColor;
-  }
-
   .episode-location-text {
     font-weight: 600;
     color: $color-text;
+  }
+
+  .episode-location-ext {
+    font-size: 0.65rem;
+    opacity: 0.8;
+    margin-left: 0.3rem;
+    vertical-align: middle;
   }
 }
 
@@ -351,6 +353,41 @@ $lightbox-img-max-h: 90vh;
   .nav-all {
     font-size: 1.1rem;
     color: $color-text-light;
+  }
+}
+
+.episode-nav-links--top {
+  margin-bottom: $spacing-md;
+
+  .nav-prev,
+  .nav-next {
+    padding: 0.35rem 0.85rem;
+    border: 1.5px solid $color-primary;
+    border-radius: 4px;
+    background: #fff;
+    font-size: 0.875rem;
+    min-width: unset;
+    text-align: center;
+
+    &:hover {
+      background: $color-primary;
+      color: #fff;
+    }
+  }
+
+  .nav-all {
+    padding: 0.35rem 0.85rem;
+    border: 1.5px solid $color-primary;
+    border-radius: 4px;
+    background: #fff;
+    font-size: 0.875rem;
+    text-align: center;
+    color: $color-primary;
+
+    &:hover {
+      background: $color-primary;
+      color: #fff;
+    }
   }
 }
 

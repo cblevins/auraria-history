@@ -42,7 +42,7 @@ _next_num -%}{%- assign next_stop = s -%}{%- endif -%} {%- endfor -%}
           <a href="{{ '/tour/' | relative_url }}">Tour</a> &rsaquo; Stop {{
           page.stop_number }}
         </p>
-        <h1>{{ page.title }}</h1>
+        <h1>{{ page.stop_number }}. {{ page.title }}</h1>
         {% if location_label != "" %}
         <p class="episode-location-line">
           <a
@@ -51,12 +51,38 @@ _next_num -%}{%- assign next_stop = s -%}{%- endif -%} {%- endfor -%}
             target="_blank"
             rel="noopener"
             aria-label="View {{ location_label }} on Google Maps"
-          ><svg class="episode-location-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg></a>
-          <span class="episode-location-text">{{ location_label }}</span>
+            ><i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+            <span class="episode-location-text">&nbsp;{{ location_label }}</span
+            ><i
+              class="fa-solid fa-arrow-up-right-from-square episode-location-ext"
+              aria-hidden="true"
+            ></i
+          ></a>
         </p>
         {% endif %}
       </div>
     </header>
+
+    <div class="episode-nav-links episode-nav-links--top">
+      {% if prev_stop %}
+      <a href="{{ prev_stop.url | relative_url }}" class="nav-prev"
+        >&larr; Stop {{ prev_stop.stop_number }}: {{ prev_stop.title }}</a
+      >
+      {% else %}
+      <a href="{{ '/tour/' | relative_url }}" class="nav-prev"
+        >&larr; All Stops</a
+      >
+      {% endif %}
+      {% if next_stop %}
+      <a href="{{ next_stop.url | relative_url }}" class="nav-next"
+        >Stop {{ next_stop.stop_number }}: {{ next_stop.title }} &rarr;</a
+      >
+      {% else %}
+      <a href="{{ '/tour/' | relative_url }}" class="nav-next"
+        >All Stops &rarr;</a
+      >
+      {% endif %}
+    </div>
 
     <section class="stop-orientation" aria-label="Find this stop">
       <div class="orientation-photo">
@@ -86,8 +112,7 @@ _next_num -%}{%- assign next_stop = s -%}{%- endif -%} {%- endfor -%}
           data-number="{{ page.stop_number }}"
         ></div>
         <p class="orientation-caption">
-          {% if location_label != "" %}
-          Open in:
+          {% if location_label != "" %} Open in:
           <a
             href="https://www.google.com/maps/search/?api=1&amp;query={{ location_lat }},{{ location_lng }}"
             target="_blank"
@@ -138,10 +163,10 @@ _next_num -%}{%- assign next_stop = s -%}{%- endif -%} {%- endfor -%}
     {% endif %}
 
     <nav class="episode-nav" aria-label="Tour stop navigation">
-      <div class="episode-nav-links">
+      <div class="episode-nav-links episode-nav-links--top">
         {% if prev_stop %}
         <a href="{{ prev_stop.url | relative_url }}" class="nav-prev"
-          >&larr; Stop {{ prev_stop.stop_number }}</a
+          >&larr; Stop {{ prev_stop.stop_number }}: {{ prev_stop.title }}</a
         >
         {% else %}
         <a href="{{ '/tour/' | relative_url }}" class="nav-prev"
@@ -151,7 +176,7 @@ _next_num -%}{%- assign next_stop = s -%}{%- endif -%} {%- endfor -%}
         <a href="{{ '/tour/' | relative_url }}" class="nav-all">All Stops</a>
         {% if next_stop %}
         <a href="{{ next_stop.url | relative_url }}" class="nav-next"
-          >Stop {{ next_stop.stop_number }} &rarr;</a
+          >Stop {{ next_stop.stop_number }}: {{ next_stop.title }} &rarr;</a
         >
         {% else %}
         <a href="{{ '/tour/' | relative_url }}" class="nav-next"
