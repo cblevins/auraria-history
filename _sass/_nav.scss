@@ -34,6 +34,10 @@
   padding: 0;
   gap: $spacing-lg;
 
+  li {
+    position: relative;
+  }
+
   a {
     color: $color-white;
     text-decoration: none;
@@ -50,6 +54,42 @@
       outline: 2px solid $color-accent;
       outline-offset: 3px;
       border-radius: 2px;
+    }
+  }
+}
+
+.nav-item--has-submenu {
+  &:hover,
+  &:focus-within {
+    .nav-submenu {
+      display: grid;
+    }
+  }
+}
+
+.nav-submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  min-width: 220px;
+  padding: $spacing-sm 0;
+  margin: 0;
+  list-style: none;
+  border-radius: 0 0 4px 4px;
+  background-color: darken($color-primary, 6%);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+
+  a {
+    display: block;
+    padding: 0.65rem $spacing-md;
+    border-bottom: 0;
+    white-space: nowrap;
+
+    &:hover,
+    &[aria-current] {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-bottom: 0;
     }
   }
 }

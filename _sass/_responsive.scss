@@ -23,6 +23,15 @@
       width: 100%;
     }
 
+    .nav-submenu {
+      position: static;
+      display: grid;
+      min-width: 0;
+      padding: 0 0 $spacing-sm;
+      background-color: transparent;
+      box-shadow: none;
+    }
+
     a {
       display: block;
       padding: $spacing-md $spacing-lg;
@@ -34,6 +43,12 @@
         background-color: rgba(255, 255, 255, 0.1);
         border-bottom: none;
       }
+    }
+
+    .nav-submenu a {
+      padding: $spacing-sm $spacing-lg;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.9375rem;
     }
   }
 

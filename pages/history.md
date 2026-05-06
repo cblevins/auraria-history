@@ -1,6 +1,6 @@
 ---
 layout: page
-title: History
+title: Auraria's History
 permalink: /history/
 ---
 

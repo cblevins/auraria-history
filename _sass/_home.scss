@@ -58,8 +58,10 @@
 
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: $spacing-lg;
+  max-width: 720px;
+  margin: 0 auto;
 }
 
 .card {
@@ -99,9 +101,16 @@
   padding: $spacing-md $spacing-lg;
 
   h2 {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
     font-size: 1.25rem;
     margin-bottom: $spacing-sm;
-    color: $color-primary;
+
+    i {
+      color: $color-primary;
+      font-size: 1.1rem;
+    }
   }
 
   p {

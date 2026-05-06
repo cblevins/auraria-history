@@ -4,7 +4,7 @@ layout: default
 
 <section
   class="hero"
-  style="background-image: url('{{ '/assets/images/hero-golda-meir-house.jpg' | relative_url }}');"
+  style="background-image: url('{{ '/assets/images/st-cajetans-cover.jpeg' | relative_url }}');"
 >
   <div class="hero-overlay">
     <div class="container">
@@ -21,36 +21,6 @@ layout: default
 <section class="home-cards">
   <div class="container">
     <div class="card-grid">
-      <a href="{{ '/about/' | relative_url }}" class="card">
-        <div class="card-image">
-          <img
-            src="{{ '/assets/images/section-about.jpg' | relative_url }}"
-            alt="Covered walkway on the Auraria campus"
-          />
-        </div>
-        <div class="card-body">
-          <h2>About the Project</h2>
-          <p>
-            Learn about our team and the NEH-funded initiative to recover
-            Auraria's history.
-          </p>
-        </div>
-      </a>
-      <a href="{{ '/history/' | relative_url }}" class="card">
-        <div class="card-image">
-          <img
-            src="{{ '/assets/images/section-history.jpg' | relative_url }}"
-            alt="St. Cajetan's Church in the Auraria neighborhood"
-          />
-        </div>
-        <div class="card-body">
-          <h2>History</h2>
-          <p>
-            Explore the history of Denver's Auraria neighborhood and its
-            displaced community.
-          </p>
-        </div>
-      </a>
       <a href="{{ '/tour/' | relative_url }}" class="card">
         <div class="card-image">
           <img
@@ -59,11 +29,24 @@ layout: default
           />
         </div>
         <div class="card-body">
-          <h2>Walking Tour</h2>
-          <p>
-            Experience a digital walking tour of the historic Auraria
-            neighborhood.
-          </p>
+          <h2>
+            <i class="fa-solid fa-headphones" aria-hidden="true"></i>
+            Listen to the Tour
+          </h2>
+        </div>
+      </a>
+      <a href="{{ '/about/' | relative_url }}" class="card">
+        <div class="card-image">
+          <img
+            src="{{ '/assets/images/section-about.jpg' | relative_url }}"
+            alt="Historic Building on Ninth Street, Auraria Campus"
+          />
+        </div>
+        <div class="card-body">
+          <h2>
+            <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+            About the Project
+          </h2>
         </div>
       </a>
     </div>
@@ -84,22 +67,5 @@ layout: default
         Symposium, September 28-29, 2022</cite
       >
     </blockquote>
-  </div>
-</section>
-
-<section class="home-neh">
-  <div class="container">
-    <div class="neh-acknowledgment">
-      <img
-        src="{{ '/assets/images/neh-seal.png' | relative_url }}"
-        alt="National Endowment for the Humanities seal"
-        class="neh-seal"
-      />
-      <p>
-        Recovering Auraria's Past is made possible by a Humanities Initiative at
-        Colleges and Universities grant from the National Endowment for the
-        Humanities.
-      </p>
-    </div>
   </div>
 </section>
