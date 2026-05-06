@@ -97,15 +97,32 @@ $lightbox-img-max-h: 90vh;
 .episode-location-line {
   font-size: 1.2rem;
   margin-top: $spacing-sm;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
 
-  .episode-location-icon {
-    margin-right: 0.25rem;
+  .episode-location-map-link {
+    display: inline-flex;
+    align-items: center;
+    color: $color-primary;
+    text-decoration: none;
+    opacity: 0.7;
+    transition: opacity 0.15s ease;
+
+    &:hover {
+      opacity: 1;
+    }
   }
 
-  .episode-location-link {
+  .episode-location-svg {
+    width: 1.1rem;
+    height: 1.1rem;
+    fill: currentColor;
+  }
+
+  .episode-location-text {
     font-weight: 600;
-    color: $color-primary;
-    text-decoration: underline;
+    color: $color-text;
   }
 }
 
