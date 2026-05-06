@@ -2,13 +2,6 @@
 layout: default
 ---
 
-<link
-  rel="stylesheet"
-  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-  crossorigin=""
-/>
-
 <div class="container">
   <article class="page-content tour-landing tour-landing--index">
     <header class="tour-landing-header tour-landing-header--centered">
@@ -133,108 +126,27 @@ layout: default
   </article>
 </div>
 
+<script>
+  window._tourStops = [];
+  {% assign stops = site.stops | sort: "stop_number" %}
+  {% for stop in stops %}
+    {% if stop.stop_number <= 11 and stop.location_lat and stop.location_lng %}
+      {% assign location_name = stop.location_name | default: '' %}
+      window._tourStops.push({
+        number: {{ stop.stop_number | jsonify }},
+        title: {{ stop.title | jsonify }},
+        location: {{ location_name | jsonify }},
+        url: {{ stop.url | relative_url | jsonify }},
+        lat: {{ stop.location_lat | jsonify }},
+        lng: {{ stop.location_lng | jsonify }}
+      });
+    {% endif %}
+  {% endfor %}
+</script>
 <script
   src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
   integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
   crossorigin=""
 ></script>
-<script>
-  (function () {
-    var el = document.getElementById("tour-map");
-    if (!el || typeof L === "undefined") return;
-
-    var stops = [];
-    function addStop(stop) {
-      if (!Number.isFinite(stop.lat) || !Number.isFinite(stop.lng)) return;
-      stops.push(stop);
-    }
-
-    {% assign stops = site.stops | sort: "stop_number" %}
-    {% for stop in stops %}
-      {% if stop.stop_number <= 11 and stop.location_lat and stop.location_lng %}
-        {% assign location_name = stop.location_name | default: '' %}
-        addStop({
-          number: {{ stop.stop_number | jsonify }},
-          title: {{ stop.title | jsonify }},
-          location: {{ location_name | jsonify }},
-          url: {{ stop.url | relative_url | jsonify }},
-          lat: {{ stop.location_lat | jsonify }},
-          lng: {{ stop.location_lng | jsonify }}
-        });
-      {% endif %}
-    {% endfor %}
-
-    if (!stops.length) return;
-
-    var map = L.map(el, { scrollWheelZoom: false });
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      attribution:
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      maxZoom: 19,
-    }).addTo(map);
-
-    var bounds = [];
-    stops.forEach(function (stop) {
-      var icon = L.divIcon({
-        className: "tour-number-marker",
-        html: "<span>" + stop.number + "</span>",
-        iconSize: [32, 32],
-        iconAnchor: [16, 16],
-      });
-      L.marker([stop.lat, stop.lng], { icon: icon })
-        .addTo(map)
-        .bindPopup(
-          "<strong>Stop " + stop.number + ": " + stop.title + "</strong>" +
-          (stop.location ? "<br>" + stop.location : "") +
-          '<br><a href="' + stop.url + '">Open stop &rarr;</a>'
-        );
-      bounds.push([stop.lat, stop.lng]);
-    });
-    map.fitBounds(bounds, { padding: [28, 28], maxZoom: 17 });
-    window._tourLandingMap = map;
-  })();
-</script>
-<script>
-  (function () {
-    var tablist = document.querySelector(".tour-landing-tablist");
-    if (!tablist) return;
-    var tabs = Array.prototype.slice.call(
-      tablist.querySelectorAll('[role="tab"]'),
-    );
-    if (!tabs.length) return;
-
-    function activate(target, focusIt) {
-      tabs.forEach(function (tab) {
-        var selected = tab === target;
-        tab.setAttribute("aria-selected", selected ? "true" : "false");
-        tab.tabIndex = selected ? 0 : -1;
-        var panel = document.getElementById(tab.getAttribute("aria-controls"));
-        if (panel) panel.hidden = !selected;
-      });
-      if (focusIt) target.focus();
-      if (target.id === "tour-tab-map" && window._tourLandingMap) {
-        setTimeout(function () {
-          window._tourLandingMap.invalidateSize();
-        }, 0);
-      }
-    }
-
-    tabs.forEach(function (tab, index) {
-      tab.addEventListener("click", function () {
-        activate(tab, true);
-      });
-      tab.addEventListener("keydown", function (event) {
-        var next = null;
-        if (event.key === "ArrowRight") next = tabs[(index + 1) % tabs.length];
-        else if (event.key === "ArrowLeft")
-          next = tabs[(index - 1 + tabs.length) % tabs.length];
-        else if (event.key === "Home") next = tabs[0];
-        else if (event.key === "End") next = tabs[tabs.length - 1];
-        if (next) {
-          event.preventDefault();
-          activate(next, true);
-        }
-      });
-    });
-  })();
-</script>
+<script src="{{ '/assets/js/tour-map.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/tour-tabs.js' | relative_url }}"></script>

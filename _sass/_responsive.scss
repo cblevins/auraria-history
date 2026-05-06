@@ -48,4 +48,45 @@
   h2 {
     font-size: 1.5rem;
   }
+
+  h3 {
+    font-size: 1.2rem;
+  }
+
+  h4 {
+    font-size: 1rem;
+  }
+
+  .site-content:not(.site-content--home) {
+    padding-top: calc(#{$nav-height} + #{$spacing-lg});
+    padding-bottom: $spacing-lg;
+  }
+
+  .container {
+    padding: 0 $spacing-md;
+  }
+}
+
+@media (max-width: $breakpoint-small) {
+  .team-member {
+    grid-template-columns: 1fr;
+
+    img {
+      grid-row: 1;
+      width: 70px;
+      height: 70px;
+      margin-bottom: $spacing-sm;
+    }
+
+    h3 {
+      grid-row: 2;
+      grid-column: 1;
+      align-self: auto;
+    }
+
+    p {
+      grid-row: 3;
+      grid-column: 1;
+    }
+  }
 }

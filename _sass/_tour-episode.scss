@@ -302,6 +302,7 @@ $lightbox-img-max-h: 90vh;
   margin-top: $spacing-xl;
   padding-top: $spacing-lg;
   border-top: 1px solid $color-border;
+
 }
 
 .episode-nav-links {
@@ -370,13 +371,13 @@ $lightbox-img-max-h: 90vh;
   border-radius: 50%;
   border: 0;
   background: rgba(255, 255, 255, 0.9);
-  color: #000;
+  color: $color-text;
   font-size: 1.75rem;
   line-height: 1;
   cursor: pointer;
 
   &:hover {
-    background: #fff;
+    background: $color-white;
   }
   &:focus-visible {
     outline: 3px solid $color-primary;
@@ -393,5 +394,9 @@ body.lightbox-open {
 @media (max-width: $breakpoint-mobile) {
   .stop-orientation {
     grid-template-columns: 1fr;
+  }
+
+  .lightbox {
+    padding: $spacing-md;
   }
 }

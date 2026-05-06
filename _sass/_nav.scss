@@ -45,6 +45,12 @@
     &[aria-current] {
       border-bottom-color: $color-accent;
     }
+
+    &:focus-visible {
+      outline: 2px solid $color-accent;
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
   }
 }
 
@@ -53,7 +59,9 @@
   background: none;
   border: none;
   cursor: pointer;
-  padding: $spacing-sm;
+  padding: $spacing-md;
+  min-width: 44px;
+  min-height: 44px;
 }
 
 .hamburger,

@@ -165,9 +165,15 @@
 }
 
 // Responsive
+@media (max-width: $breakpoint-tablet) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: $breakpoint-mobile) {
   .hero {
-    min-height: 50vh;
+    min-height: 40vh;
   }
 
   .hero-title {
@@ -181,6 +187,10 @@
   .card-grid {
     grid-template-columns: 1fr;
     gap: $spacing-md;
+  }
+
+  .hero-title {
+    font-size: 2rem;
   }
 
   .home-quote blockquote {
