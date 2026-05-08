@@ -1,0 +1,181 @@
+---
+layout: default
+---
+
+{%- assign audio_url =
+'https://archive.org/download/listening-auraria-past/stop-12.mp3' -%} {%-
+assign orientation_number = 1 -%} {%- assign orientation_padded = '01' -%} {%-
+assign location_label = page.location_name | default: '1015 9th Street' -%} {%-
+assign location_lat = page.location_lat | default: 39.7413317 -%} {%- assign
+location_lng = page.location_lng | default: -105.0034706 -%} {%- assign
+start_stem = '/assets/images/stop-images/stop-' | append: orientation_padded |
+append: '-start.' -%} {%- assign start_matches = site.static_files | where_exp:
+"f", "f.path contains start_stem" -%} {%- assign perspective_image =
+start_matches[0].path | default: '/assets/images/placeholder-perspective.svg'
+-%}
+
+<div class="container">
+  <article class="page-content tour-episode tour-full">
+    <header class="page-header episode-header">
+      <div class="episode-header-text">
+        <p class="episode-label">
+          <a href="{{ '/tour/' | relative_url }}">Tour</a> &rsaquo; Full Tour
+        </p>
+        <h1>{{ page.title }}</h1>
+        {% if location_label != "" %}
+        <p class="episode-location-line">
+          <a
+            class="episode-location-map-link"
+            href="https://www.google.com/maps/search/?api=1&amp;query={{ location_lat }},{{ location_lng }}"
+            target="_blank"
+            rel="noopener"
+            aria-label="View {{ location_label }} on Google Maps"
+            ><i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+            <span class="episode-location-text">&nbsp;{{ location_label }}</span
+            ><i
+              class="fa-solid fa-arrow-up-right-from-square episode-location-ext"
+              aria-hidden="true"
+            ></i
+          ></a>
+        </p>
+        {% endif %}
+      </div>
+    </header>
+
+    <div class="episode-nav-links episode-nav-links--top">
+      <a href="{{ '/tour/' | relative_url }}" class="nav-prev"
+        >&larr; All Stops</a
+      >
+    </div>
+
+    <section class="stop-orientation" aria-label="Find this stop">
+      <div class="orientation-photo">
+        <button
+          type="button"
+          class="orientation-photo__trigger lightbox-trigger"
+          data-lightbox-src="{{ perspective_image | relative_url }}"
+          data-lightbox-alt="Starting view for Stop {{ orientation_number }}"
+          aria-label="Enlarge starting view photo"
+        >
+          <img
+            src="{{ perspective_image | relative_url }}"
+            alt="Starting view for Stop {{ orientation_number }}"
+            loading="lazy"
+          />
+        </button>
+        <p class="orientation-caption">Stand here to start</p>
+      </div>
+
+      <div class="orientation-map">
+        <div
+          id="stop-map"
+          class="leaflet-map"
+          data-lat="{{ location_lat }}"
+          data-lng="{{ location_lng }}"
+          data-label="{{ location_label | escape }}"
+          data-number="{{ orientation_number }}"
+        ></div>
+        <p class="orientation-caption">
+          {% if location_label != "" %} Open in:
+          <a
+            href="https://www.google.com/maps/search/?api=1&amp;query={{ location_lat }},{{ location_lng }}"
+            target="_blank"
+            rel="noopener"
+            >Google Maps</a
+          >
+          &nbsp;|&nbsp;
+          <a
+            href="https://maps.apple.com/?ll={{ location_lat }},{{ location_lng }}&q={{ location_label | url_encode }}"
+            target="_blank"
+            rel="noopener"
+            >Apple Maps</a
+          >
+          {% else %} Map {% endif %}
+        </p>
+      </div>
+    </section>
+
+    <section class="episode-listen-group" aria-label="Audio for the full tour">
+      <h2 class="episode-section-h">Listen</h2>
+      <audio controls preload="none" class="episode-audio-player">
+        <source src="{{ audio_url }}" type="audio/mpeg" />
+        Your browser does not support audio playback.
+        <a href="{{ audio_url }}">Download the MP3</a>.
+      </audio>
+      {% include episode-listen.html audio_url=audio_url %}
+    </section>
+
+    <section class="episode-transcript" aria-label="Transcript">
+      <details class="transcript-details">
+        <summary>Transcript</summary>
+        <div class="transcript-body">
+          {% assign transcript_stops = site.stops | sort: "stop_number" %} {%
+          for transcript_stop in transcript_stops %} {% if
+          transcript_stop.stop_number <= 11 %}
+          <h2>
+            Stop {{ transcript_stop.stop_number }}: {{ transcript_stop.title }}
+          </h2>
+          {% assign transcript_slug = transcript_stop.slug | append:
+          "-transcript" %} {% assign transcript = site.transcripts | where:
+          "slug", transcript_slug | first %} {% if transcript %} {{
+          transcript.content | markdownify }} {% elsif transcript_stop.transcript
+          and transcript_stop.transcript != "" %} {{ transcript_stop.transcript |
+          markdownify }} {% else %}
+          <p>
+            <em>Transcript placeholder &mdash; full transcript forthcoming.</em>
+          </p>
+          {% endif %} {% endif %} {% endfor %}
+        </div>
+      </details>
+    </section>
+
+    {% if content and content != "" %}
+    <section class="episode-content">{{ content }}</section>
+    {% endif %}
+
+    <nav class="episode-nav" aria-label="Tour navigation">
+      <div class="episode-nav-links episode-nav-links--top">
+        <a href="{{ '/tour/' | relative_url }}" class="nav-all">All Stops</a>
+      </div>
+    </nav>
+  </article>
+</div>
+
+<div
+  id="lightbox"
+  class="lightbox"
+  hidden
+  role="dialog"
+  aria-modal="true"
+  aria-label="Enlarged image"
+>
+  <button type="button" class="lightbox-close" aria-label="Close">
+    &times;
+  </button>
+  <img class="lightbox-img" src="" alt="" />
+</div>
+
+<script>
+  window._tourStops = [];
+  {% assign all_stops = site.stops | sort: "stop_number" %}
+  {% for stop in all_stops %}
+    {% if stop.stop_number <= 11 and stop.location_lat and stop.location_lng %}
+      {% assign location_name = stop.location_name | default: '' %}
+      window._tourStops.push({
+        number: {{ stop.stop_number | jsonify }},
+        title: {{ stop.title | jsonify }},
+        location: {{ location_name | jsonify }},
+        url: {{ stop.url | relative_url | jsonify }},
+        lat: {{ stop.location_lat | jsonify }},
+        lng: {{ stop.location_lng | jsonify }}
+      });
+    {% endif %}
+  {% endfor %}
+</script>
+<script
+  src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+  crossorigin=""
+></script>
+<script src="{{ '/assets/js/lightbox.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/stop-map.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
