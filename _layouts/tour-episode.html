@@ -148,6 +148,9 @@ _next_num -%}{%- assign next_stop = s -%}{%- endif -%} {%- endfor -%}
       <details class="transcript-details">
         <summary>
           <h2 class="episode-section-h">Transcript <i class="fa-solid fa-chevron-right transcript-chevron" aria-hidden="true"></i></h2>
+          <button type="button" class="transcript-copy-btn" aria-label="Copy transcript to clipboard">
+            <i class="fa-regular fa-copy" aria-hidden="true"></i> Copy
+          </button>
         </summary>
         <div class="transcript-body">
           {% assign transcript_slug = page.slug | append: "-transcript" %} {%
@@ -227,3 +230,19 @@ _next_num -%}{%- assign next_stop = s -%}{%- endif -%} {%- endfor -%}
 ></script>
 <script src="{{ '/assets/js/lightbox.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/stop-map.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
+<script>
+  document.querySelector('.transcript-copy-btn')?.addEventListener('click', function (e) {
+    e.stopPropagation();
+    const body = this.closest('.transcript-body');
+    const text = Array.from(body.querySelectorAll('p, li'))
+      .map(el => el.innerText.trim())
+      .filter(Boolean)
+      .join('\n\n');
+    navigator.clipboard.writeText(text).then(() => {
+      this.innerHTML = '<i class="fa-solid fa-check" aria-hidden="true"></i> Copied!';
+      setTimeout(() => {
+        this.innerHTML = '<i class="fa-regular fa-copy" aria-hidden="true"></i> Copy';
+      }, 2000);
+    });
+  });
+</script>
