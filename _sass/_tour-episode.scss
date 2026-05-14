@@ -144,7 +144,7 @@ $lightbox-img-max-h: 90vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: $spacing-md;
-  margin: 0 0 $spacing-xl;
+  margin: 0 0 $spacing-lg;
   align-items: start;
 }
 
@@ -221,7 +221,7 @@ $lightbox-img-max-h: 90vh;
   border: 1px solid $color-border;
   border-radius: 6px;
   background: $color-white;
-  margin-bottom: $spacing-xl;
+  margin-bottom: $spacing-lg;
 
   // Pull the streaming icons up tight against the download/meta line
   .episode-listen {
@@ -242,22 +242,42 @@ $lightbox-img-max-h: 90vh;
   border: 1px solid $color-border;
   border-radius: 4px;
   background-color: $color-white;
-  margin-bottom: $spacing-xl;
+  margin-bottom: $spacing-lg;
 
   summary {
     cursor: pointer;
     padding: $spacing-md $spacing-lg;
-    font-weight: 600;
-    color: $color-primary;
+    list-style: none;
     user-select: none;
 
-    &:hover {
-      color: darken($color-primary, 10%);
+    &::-webkit-details-marker {
+      display: none;
     }
+
+    .episode-section-h {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0;
+    }
+
+    &:hover .episode-section-h {
+      color: $color-text;
+    }
+  }
+
+  .transcript-chevron {
+    font-size: 0.8rem;
+    transition: transform 0.2s ease;
+    opacity: 0.7;
   }
 
   &[open] summary {
     border-bottom: 1px solid $color-border;
+  }
+
+  &[open] .transcript-chevron {
+    transform: rotate(90deg);
   }
 
   .transcript-body {
@@ -275,11 +295,11 @@ $lightbox-img-max-h: 90vh;
 // ---------- Optional body content + legacy image gallery ---------------------
 
 .episode-content {
-  margin-bottom: $spacing-xl;
+  margin-bottom: $spacing-lg;
 }
 
 .episode-images {
-  margin-bottom: $spacing-xl;
+  margin-bottom: $spacing-lg;
 
   figure {
     margin: 0 0 $spacing-lg 0;
@@ -301,7 +321,7 @@ $lightbox-img-max-h: 90vh;
 // Legacy "boxed location" panel - retained for back-compat in case any
 // stop still uses it before all are migrated to the tabs widget.
 .episode-location {
-  margin-bottom: $spacing-xl;
+  margin-bottom: $spacing-lg;
   padding: $spacing-md $spacing-lg;
   background-color: $color-white;
   border: 1px solid $color-border;
@@ -318,8 +338,8 @@ $lightbox-img-max-h: 90vh;
 // ---------- Prev / next navigation -------------------------------------------
 
 .episode-nav {
-  margin-top: $spacing-xl;
-  padding-top: $spacing-lg;
+  margin-top: $spacing-lg;
+  padding-top: $spacing-md;
   border-top: 1px solid $color-border;
 }
 
