@@ -72,8 +72,7 @@ _next_num -%}{%- assign next_stop = s -%}{%- endif -%} {%- endfor -%}
       <a href="{{ '/tour/' | relative_url }}" class="nav-prev"
         >&larr; All Stops</a
       >
-      {% endif %}
-      {% if next_stop %}
+      {% endif %} {% if next_stop %}
       <a href="{{ next_stop.url | relative_url }}" class="nav-next"
         >Stop {{ next_stop.stop_number }}: {{ next_stop.title }} &rarr;</a
       >
@@ -131,6 +130,10 @@ _next_num -%}{%- assign next_stop = s -%}{%- endif -%} {%- endfor -%}
       </div>
     </section>
 
+    {% if content and content != "" %}
+    <section class="episode-content">{{ content }}</section>
+    {% endif %}
+
     <section class="episode-listen-group" aria-label="Audio for this stop">
       <h2 class="episode-section-h">Listen</h2>
       <audio controls preload="none" class="episode-audio-player">
@@ -157,10 +160,6 @@ _next_num -%}{%- assign next_stop = s -%}{%- endif -%} {%- endfor -%}
         </div>
       </details>
     </section>
-
-    {% if content and content != "" %}
-    <section class="episode-content">{{ content }}</section>
-    {% endif %}
 
     <nav class="episode-nav" aria-label="Tour stop navigation">
       <div class="episode-nav-links episode-nav-links--top">

@@ -13,3 +13,5 @@ apple_url: ""
 rss_url: ""
 amazon_url: ""
 ---
+
+This stop along the edge of Ninth Stret Historic Park highlights the lack of monuments and memorial sites commemorating the displacement and features the harsh memories of moving day from Displaced Aurarians Tony Garcia, Rita Gomez Delgado, Frances Torres, and Sheila Perez-Kindle.

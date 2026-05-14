@@ -13,3 +13,5 @@ apple_url: ""
 rss_url: ""
 amazon_url: ""
 ---
+
+This stop at the entrance to Ninth Street Historic Park focuses on historical preservation efforts during the 1970s and explains why and how these old houses are still here.
