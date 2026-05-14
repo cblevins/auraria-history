@@ -146,7 +146,9 @@ _next_num -%}{%- assign next_stop = s -%}{%- endif -%} {%- endfor -%}
 
     <section class="episode-transcript" aria-label="Transcript">
       <details class="transcript-details">
-        <summary>Transcript</summary>
+        <summary>
+          <h2 class="episode-section-h">Transcript <i class="fa-solid fa-chevron-right transcript-chevron" aria-hidden="true"></i></h2>
+        </summary>
         <div class="transcript-body">
           {% assign transcript_slug = page.slug | append: "-transcript" %} {%
           assign transcript = site.transcripts | where: "slug", transcript_slug
