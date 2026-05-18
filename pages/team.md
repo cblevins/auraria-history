@@ -45,9 +45,9 @@ permalink: /team/
 </div>
 
 <div class="team-member">
-  <img src="{{ '/assets/images/headshot-placeholder.svg' | relative_url }}" alt="Indira Saha">
+  <img src="{{ '/assets/images/headshot-saha.jpg' | relative_url }}" alt="Indira Saha">
   <h3>Indira Saha</h3>
-  <p>Indira Saha was a Graduate Student of Public History at the University of Colorado Denver. She contributed research and was co-lead on recording and editing the audio tour.</p>
+  <p>Indira Saha is a public history professional. During her graduate studies at CU Denver, she worked as a Research Assistant with the Auraria Project and as the Colorado Heritage for All intern with the State Historic Preservation Office, where she wrote the State Register nomination for the Ethiopian Orthodox Tewahedo Medhanealem Church. She contributed research and co-led the recording and editing of the audio tour. She currently works at History Colorado on <a href="https://www.historycolorado.org/initiative-portrait-colorado-150">A Portrait of Colorado at 150</a> statewide storytelling initiative.</p>
 </div>
 
 </div>
