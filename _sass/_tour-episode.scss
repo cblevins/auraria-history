@@ -214,6 +214,11 @@ $lightbox-img-max-h: 90vh;
   z-index: 0;
 }
 
+// Full-tour page: full-width all-stops map (no photo alongside)
+.full-tour-map-wrap {
+  margin-bottom: $spacing-lg;
+}
+
 // ---------- Audio + streaming links group ------------------------------------
 
 .episode-listen-group {

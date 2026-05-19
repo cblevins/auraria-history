@@ -3,16 +3,10 @@ layout: default
 ---
 
 {%- assign audio_url =
-'https://archive.org/download/listening-auraria-past/stop-12.mp3' -%} {%-
-assign orientation_number = 1 -%} {%- assign orientation_padded = '01' -%} {%-
-assign location_label = page.location_name | default: '1015 9th Street' -%} {%-
-assign location_lat = page.location_lat | default: 39.7413317 -%} {%- assign
-location_lng = page.location_lng | default: -105.0034706 -%} {%- assign
-start_stem = '/assets/images/stop-images/stop-' | append: orientation_padded |
-append: '-start.' -%} {%- assign start_matches = site.static_files | where_exp:
-"f", "f.path contains start_stem" -%} {%- assign perspective_image =
-start_matches[0].path | default: '/assets/images/placeholder-perspective.svg'
--%}
+'https://archive.org/download/listening-auraria-past/stop-12.mp3' -%} {%- assign
+location_label = page.location_name | default: '1015 9th Street' -%} {%- assign
+location_lat = page.location_lat | default: 39.7413317 -%} {%- assign
+location_lng = page.location_lng | default: -105.0034706 -%}
 
 <div class="container">
   <article class="page-content tour-episode tour-full">
@@ -48,53 +42,31 @@ start_matches[0].path | default: '/assets/images/placeholder-perspective.svg'
       >
     </div>
 
-    <section class="stop-orientation" aria-label="Find this stop">
-      <div class="orientation-photo">
-        <button
-          type="button"
-          class="orientation-photo__trigger lightbox-trigger"
-          data-lightbox-src="{{ perspective_image | relative_url }}"
-          data-lightbox-alt="Starting view for Stop {{ orientation_number }}"
-          aria-label="Enlarge starting view photo"
+    <!--
+    <section class="full-tour-map-wrap" aria-label="All tour stops">
+      <div
+        id="tour-map"
+        class="tour-landing-map"
+        aria-label="Map of all 11 tour stops"
+      ></div>
+      <p class="orientation-caption">
+        Open in:
+        <a
+          href="https://www.google.com/maps/search/?api=1&amp;query={{ location_lat }},{{ location_lng }}"
+          target="_blank"
+          rel="noopener"
+          >Google Maps</a
         >
-          <img
-            src="{{ perspective_image | relative_url }}"
-            alt="Starting view for Stop {{ orientation_number }}"
-            loading="lazy"
-          />
-        </button>
-        <p class="orientation-caption">Stand here to start</p>
-      </div>
-
-      <div class="orientation-map">
-        <div
-          id="stop-map"
-          class="leaflet-map"
-          data-lat="{{ location_lat }}"
-          data-lng="{{ location_lng }}"
-          data-label="{{ location_label | escape }}"
-          data-number="{{ orientation_number }}"
-        ></div>
-        <p class="orientation-caption">
-          {% if location_label != "" %} Open in:
-          <a
-            href="https://www.google.com/maps/search/?api=1&amp;query={{ location_lat }},{{ location_lng }}"
-            target="_blank"
-            rel="noopener"
-            >Google Maps</a
-          >
-          &nbsp;|&nbsp;
-          <a
-            href="https://maps.apple.com/?ll={{ location_lat }},{{ location_lng }}&q={{ location_label | url_encode }}"
-            target="_blank"
-            rel="noopener"
-            >Apple Maps</a
-          >
-          {% else %} Map {% endif %}
-        </p>
-      </div>
+        &nbsp;|&nbsp;
+        <a
+          href="https://maps.apple.com/?ll={{ location_lat }},{{ location_lng }}&q={{ location_label | url_encode }}"
+          target="_blank"
+          rel="noopener"
+          >Apple Maps</a
+        >
+      </p>
     </section>
-
+-->
     <section class="episode-listen-group" aria-label="Audio for the full tour">
       <h2 class="episode-section-h">Listen</h2>
       <audio controls preload="none" class="episode-audio-player">
@@ -107,7 +79,22 @@ start_matches[0].path | default: '/assets/images/placeholder-perspective.svg'
 
     <section class="episode-transcript" aria-label="Transcript">
       <details class="transcript-details">
-        <summary>Transcript</summary>
+        <summary>
+          <h2 class="episode-section-h">
+            Transcript
+            <i
+              class="fa-solid fa-chevron-right transcript-chevron"
+              aria-hidden="true"
+            ></i>
+          </h2>
+          <button
+            type="button"
+            class="transcript-copy-btn"
+            aria-label="Copy transcript to clipboard"
+          >
+            <i class="fa-regular fa-copy" aria-hidden="true"></i> Copy
+          </button>
+        </summary>
         <div class="transcript-body">
           {% assign transcript_stops = site.stops | sort: "stop_number" %} {%
           for transcript_stop in transcript_stops %} {% if
@@ -118,9 +105,9 @@ start_matches[0].path | default: '/assets/images/placeholder-perspective.svg'
           {% assign transcript_slug = transcript_stop.slug | append:
           "-transcript" %} {% assign transcript = site.transcripts | where:
           "slug", transcript_slug | first %} {% if transcript %} {{
-          transcript.content | markdownify }} {% elsif transcript_stop.transcript
-          and transcript_stop.transcript != "" %} {{ transcript_stop.transcript |
-          markdownify }} {% else %}
+          transcript.content | markdownify }} {% elsif
+          transcript_stop.transcript and transcript_stop.transcript != "" %} {{
+          transcript_stop.transcript | markdownify }} {% else %}
           <p>
             <em>Transcript placeholder &mdash; full transcript forthcoming.</em>
           </p>
@@ -139,20 +126,6 @@ start_matches[0].path | default: '/assets/images/placeholder-perspective.svg'
       </div>
     </nav>
   </article>
-</div>
-
-<div
-  id="lightbox"
-  class="lightbox"
-  hidden
-  role="dialog"
-  aria-modal="true"
-  aria-label="Enlarged image"
->
-  <button type="button" class="lightbox-close" aria-label="Close">
-    &times;
-  </button>
-  <img class="lightbox-img" src="" alt="" />
 </div>
 
 <script>
@@ -177,5 +150,32 @@ start_matches[0].path | default: '/assets/images/placeholder-perspective.svg'
   integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
   crossorigin=""
 ></script>
-<script src="{{ '/assets/js/lightbox.js' | relative_url }}"></script>
-<script src="{{ '/assets/js/stop-map.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ '/assets/js/tour-map.js' | relative_url }}"></script>
+<script>
+  // Force Leaflet to recalculate tile positions after the browser has painted
+  requestAnimationFrame(function () {
+    requestAnimationFrame(function () {
+      if (window._tourLandingMap) window._tourLandingMap.invalidateSize();
+    });
+  });
+</script>
+<script>
+  document
+    .querySelector(".transcript-copy-btn")
+    ?.addEventListener("click", function (e) {
+      e.stopPropagation();
+      const body = this.closest(".transcript-body");
+      const text = Array.from(body.querySelectorAll("p, li"))
+        .map((el) => el.innerText.trim())
+        .filter(Boolean)
+        .join("\n\n");
+      navigator.clipboard.writeText(text).then(() => {
+        this.innerHTML =
+          '<i class="fa-solid fa-check" aria-hidden="true"></i> Copied!';
+        setTimeout(() => {
+          this.innerHTML =
+            '<i class="fa-regular fa-copy" aria-hidden="true"></i> Copy';
+        }, 2000);
+      });
+    });
+</script>
