@@ -14,4 +14,4 @@ rss_url: ""
 amazon_url: ""
 ---
 
-1050 9th St. Park — also called the Centennial House - has been a pivotal site for memorializing both the displacement and the ongoing struggles to access and expand the promised Displaced Aurarian Scholarship. This stop emphasizes the value of education for Discplaced Aurarians and their descendants. 
+1050 9th Street — also called the Centennial House - has been a pivotal site for memorializing both the displacement and the ongoing struggles to access and expand the promised Displaced Aurarian Scholarship. This stop emphasizes the value of education for Displaced Aurarians and their descendants. 

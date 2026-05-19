@@ -14,4 +14,4 @@ amazon_url: "https://music.amazon.com/podcasts/ce1c0e70-1a1e-4c7e-9109-cb805147e
 rss_url: "https://media.rss.com/listening-auraria-past/feed.xml"
 ---
 
-1015 9th St. marks the starting point of the digital walking tour. This stop, narrated by Displaced Aurarian and Auraria Historical Advocacy Council leader Sheila Perez-Kindle and CU Denver Professor Rachel Gross, serves as a gateway into understanding the Westside neighborhood’s history of community, displacement, and activism.
+1015 9th Street marks the starting point of the walking tour. This stop, narrated by Displaced Aurarian and Auraria Historical Advocacy Council leader Sheila Perez-Kindle and CU Denver Professor Rachel Gross, serves as a gateway into understanding the Westside neighborhood’s history of community, displacement, and activism.

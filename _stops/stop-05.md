@@ -14,4 +14,4 @@ rss_url: ""
 amazon_url: ""
 ---
 
-The large building on 9th Street used to be a pickle factor, representing the overlap between Auraria’s industrial and residential worlds, where children played freely among factories and alleyways. It features memories from Frances Torres and Gloria Gallegos of growing up in the Westside’s mixed environment of homes, businesses, and open space. 
+The large building on 9th Street used to be a pickle factory, representing the overlap between Auraria’s industrial and residential worlds, where children played freely among factories and alleyways. It features memories from Frances Torres and Gloria Gallegos of growing up in the Westside’s mixed environment of homes, businesses, and open space. 
