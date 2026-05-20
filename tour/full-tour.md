@@ -1,6 +1,6 @@
 ---
 layout: tour-full
-title: "Full Tour"
+title: "The Full Tour"
 stop_number: 12
 permalink: /tour/full/
 
