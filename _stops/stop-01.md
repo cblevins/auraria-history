@@ -8,9 +8,9 @@ location_name: "1015 9th Street"
 location_lat: 39.7413317
 location_lng: -105.0034706
 
-spotify_url: "https://open.spotify.com/episode/5htgHkOXJj5J9XJam42eCo?si=4yrhzREmRnyL0blRzrTZQw"
-apple_url: "https://podcasts.apple.com/us/podcast/stop-1-welcome-to-the-westside/id1896254465?i=1000766057910"
-amazon_url: "https://music.amazon.com/podcasts/ce1c0e70-1a1e-4c7e-9109-cb805147e8b7/episodes/2f8370e1-6075-4b41-912f-7be9c1cd376a/listening-to-auraria's-past-stop-1-welcome-to-the-westside"
+spotify_url: "https://open.spotify.com/episode/5stN2KOhT3SGGlYctiemV7"
+apple_url: "https://podcasts.apple.com/us/podcast/stop-1-welcome-to-the-westside/id1896254465?i=1000768624521"
+amazon_url: "https://music.amazon.com/podcasts/ce1c0e70-1a1e-4c7e-9109-cb805147e8b7/episodes/27f83260-8c77-44bc-a53b-84850d472768/listening-to-auraria's-past-stop-1-welcome-to-the-westside"
 rss_url: "https://media.rss.com/listening-auraria-past/feed.xml"
 ---
 
