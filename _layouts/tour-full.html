@@ -3,9 +3,9 @@ layout: default
 ---
 
 {%- assign audio_url =
-'https://archive.org/download/listening-auraria-past/full-tour.mp3' -%} {%- assign
-location_label = page.location_name | default: '1015 9th Street' -%} {%- assign
-location_lat = page.location_lat | default: 39.7413317 -%} {%- assign
+'https://archive.org/download/listening-auraria-past/full-tour.mp3' -%} {%-
+assign location_label = page.location_name | default: '1015 9th Street' -%} {%-
+assign location_lat = page.location_lat | default: 39.7413317 -%} {%- assign
 location_lng = page.location_lng | default: -105.0034706 -%}
 
 <div class="container">
@@ -77,6 +77,15 @@ location_lng = page.location_lng | default: -105.0034706 -%}
       {% include episode-listen.html audio_url=audio_url %}
     </section>
 
+    <section class="full-tour-map-wrap" aria-label="Map of all tour stops">
+      <h2 class="episode-section-h">Tour Map</h2>
+      <div
+        id="tour-map"
+        class="tour-landing-map"
+        aria-label="Numbered map of audio tour stops"
+      ></div>
+    </section>
+
     <section class="episode-transcript" aria-label="Transcript">
       <details class="transcript-details">
         <summary>
@@ -114,15 +123,6 @@ location_lng = page.location_lng | default: -105.0034706 -%}
           {% endif %} {% endif %} {% endfor %}
         </div>
       </details>
-    </section>
-
-    <section class="full-tour-map-wrap" aria-label="Map of all tour stops">
-      <h2 class="episode-section-h">Tour Map</h2>
-      <div
-        id="tour-map"
-        class="tour-landing-map"
-        aria-label="Numbered map of audio tour stops"
-      ></div>
     </section>
 
     {% if content and content != "" %}
@@ -187,9 +187,15 @@ location_lng = page.location_lng | default: -105.0034706 -%}
       L.marker([stop.lat, stop.lng], { icon: icon })
         .addTo(map)
         .bindPopup(
-          "<strong>Stop " + stop.number + ": " + stop.title + "</strong>" +
-          (stop.location ? "<br>" + stop.location : "") +
-          '<br><a href="' + stop.url + '">Open stop &rarr;</a>'
+          "<strong>Stop " +
+            stop.number +
+            ": " +
+            stop.title +
+            "</strong>" +
+            (stop.location ? "<br>" + stop.location : "") +
+            '<br><a href="' +
+            stop.url +
+            '">Open stop &rarr;</a>',
         );
       bounds.push([stop.lat, stop.lng]);
     });

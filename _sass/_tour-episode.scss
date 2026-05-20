@@ -322,6 +322,25 @@ $lightbox-img-max-h: 90vh;
   }
 }
 
+// ---------- Full-tour map section --------------------------------------------
+
+.full-tour-map-wrap {
+  border: 1px solid $color-border;
+  border-radius: 6px;
+  background: $color-white;
+  margin-bottom: $spacing-lg;
+  overflow: hidden;
+
+  .episode-section-h {
+    padding: $spacing-md $spacing-lg;
+    margin-bottom: 0;
+  }
+
+  .tour-landing-map {
+    border-radius: 0 0 6px 6px;
+  }
+}
+
 // ---------- Optional body content + legacy image gallery ---------------------
 
 .episode-content {
