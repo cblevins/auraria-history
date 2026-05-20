@@ -116,6 +116,15 @@ location_lng = page.location_lng | default: -105.0034706 -%}
       </details>
     </section>
 
+    <section class="full-tour-map-wrap" aria-label="Map of all tour stops">
+      <h2 class="episode-section-h">Tour Map</h2>
+      <div
+        id="tour-map"
+        class="tour-landing-map"
+        aria-label="Numbered map of audio tour stops"
+      ></div>
+    </section>
+
     {% if content and content != "" %}
     <section class="episode-content">{{ content }}</section>
     {% endif %}
@@ -150,13 +159,43 @@ location_lng = page.location_lng | default: -105.0034706 -%}
   integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
   crossorigin=""
 ></script>
-<script src="{{ '/assets/js/tour-map.js' | relative_url }}"></script>
 <script>
-  // Force Leaflet to recalculate tile positions after the browser has painted
-  requestAnimationFrame(function () {
-    requestAnimationFrame(function () {
-      if (window._tourLandingMap) window._tourLandingMap.invalidateSize();
+  // Initialise the map inside window.load so the container is fully rendered
+  // and has correct dimensions before Leaflet fetches any tiles.
+  window.addEventListener("load", function () {
+    var el = document.getElementById("tour-map");
+    if (!el || typeof L === "undefined") return;
+    var stops = window._tourStops || [];
+    if (!stops.length) return;
+
+    var map = L.map(el, { scrollWheelZoom: false });
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      maxZoom: 19,
+    }).addTo(map);
+
+    var bounds = [];
+    stops.forEach(function (stop) {
+      if (!Number.isFinite(stop.lat) || !Number.isFinite(stop.lng)) return;
+      var icon = L.divIcon({
+        className: "tour-number-marker",
+        html: "<span>" + stop.number + "</span>",
+        iconSize: [32, 32],
+        iconAnchor: [16, 16],
+      });
+      L.marker([stop.lat, stop.lng], { icon: icon })
+        .addTo(map)
+        .bindPopup(
+          "<strong>Stop " + stop.number + ": " + stop.title + "</strong>" +
+          (stop.location ? "<br>" + stop.location : "") +
+          '<br><a href="' + stop.url + '">Open stop &rarr;</a>'
+        );
+      bounds.push([stop.lat, stop.lng]);
     });
+    if (bounds.length) {
+      map.fitBounds(bounds, { padding: [28, 28], maxZoom: 17 });
+    }
   });
 </script>
 <script>

@@ -1,41 +1,60 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
-  <meta name="description" content="{{ page.description | default: site.description }}">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{ '/css/main.css' | relative_url }}">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous">
-  {% if page.layout == 'tour-episode' or page.layout == 'tour-landing' %}
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-  {% endif %}
-</head>
-<body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      {% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{
+      site.title }}{% endif %}
+    </title>
+    <meta
+      name="description"
+      content="{{ page.description | default: site.description }}"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{{ '/css/main.css' | relative_url }}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      crossorigin="anonymous"
+    />
+    {% if page.layout == 'tour-episode' or page.layout == 'tour-landing' or
+    page.layout == 'tour-full' %}
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    {% endif %}
+  </head>
+  <body>
+    {% include nav.html %}
 
-  {% include nav.html %}
+    <main
+      class="site-content{% if page.layout == 'home' %} site-content--home{% endif %}"
+    >
+      {{ content }}
+    </main>
 
-  <main class="site-content{% if page.layout == 'home' %} site-content--home{% endif %}">
-    {{ content }}
-  </main>
+    {% include footer.html %}
 
-  {% include footer.html %}
-
-  <script>
-  (function() {
-    var toggle = document.querySelector('.nav-toggle');
-    var links = document.querySelector('.nav-links');
-    if (!toggle || !links) return;
-    toggle.addEventListener('click', function() {
-      var isOpen = toggle.classList.toggle('open');
-      links.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', isOpen);
-    });
-  })();
-  </script>
-
-</body>
+    <script>
+      (function () {
+        var toggle = document.querySelector(".nav-toggle");
+        var links = document.querySelector(".nav-links");
+        if (!toggle || !links) return;
+        toggle.addEventListener("click", function () {
+          var isOpen = toggle.classList.toggle("open");
+          links.classList.toggle("open");
+          toggle.setAttribute("aria-expanded", isOpen);
+        });
+      })();
+    </script>
+  </body>
 </html>
