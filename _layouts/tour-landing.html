@@ -8,6 +8,7 @@ layout: default
       <h1>{{ page.title }}</h1>
       <div class="tour-landing-intro">{{ content }}</div>
       {% include episode-listen.html %}
+      <!--
       <div class="tour-landing-actions" aria-label="Primary tour actions">
         <a
           class="tour-landing-action"
@@ -18,6 +19,7 @@ layout: default
           >Listen to Full Tour</a
         >
       </div>
+      -->
     </header>
 
     <section class="tour-landing-tabs" aria-label="Tour browsing options">
@@ -30,7 +32,10 @@ layout: default
           aria-controls="tour-panel-stops"
           tabindex="0"
         >
-          <span>Tour Stops</span>
+          <span
+            ><i class="fa-solid fa-headphones" aria-hidden="true"></i>&nbsp;
+            Tour Stops</span
+          >
         </button>
         <button
           type="button"
@@ -40,7 +45,10 @@ layout: default
           aria-controls="tour-panel-map"
           tabindex="-1"
         >
-          <span>Tour Map</span>
+          <span
+            ><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i
+            >&nbsp; Tour Map</span
+          >
         </button>
       </div>
 
@@ -52,12 +60,14 @@ layout: default
       >
         <div class="tour-landing-index-grid">
           {% assign stops = site.stops | sort: "stop_number" %} {% for stop in
-          stops %} {% if stop.stop_number <= 11 %}
-          {%- assign sp = stop.stop_number | prepend: '00' | slice: -2, 2 -%}
-          {%- assign d_stem = '/assets/images/stop-images/stop-' | append: sp | append: '-drawing.' -%}
-          {%- assign d_matches = site.static_files | where_exp: "f", "f.path contains d_stem" -%}
-          {%- assign thumbnail_image = d_matches[0].path | default: '/assets/images/placeholder-thumbnail.svg' -%}
-          {% assign location_name = stop.location_name | default: '' %}
+          stops %} {% if stop.stop_number <= 11 %} {%- assign sp =
+          stop.stop_number | prepend: '00' | slice: -2, 2 -%} {%- assign d_stem
+          = '/assets/images/stop-images/stop-' | append: sp | append:
+          '-drawing.' -%} {%- assign d_matches = site.static_files | where_exp:
+          "f", "f.path contains d_stem" -%} {%- assign thumbnail_image =
+          d_matches[0].path | default:
+          '/assets/images/placeholder-thumbnail.svg' -%} {% assign location_name
+          = stop.location_name | default: '' %}
           <a
             href="{{ stop.url | relative_url }}"
             class="tour-landing-index-card"

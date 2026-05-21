@@ -16,8 +16,8 @@ body {
 }
 
 .site-content {
-  padding-top: calc(#{$nav-height} + #{$spacing-xl});
-  padding-bottom: $spacing-xl;
+  padding-top: calc(#{$nav-height} + #{$spacing-lg});
+  padding-bottom: $spacing-lg;
   min-height: 60vh;
 
   &--home {
@@ -79,7 +79,10 @@ img {
 }
 
 .about-link-card {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
   padding: $spacing-lg;
   border: 1px solid $color-border;
   border-radius: 6px;
@@ -88,14 +91,15 @@ img {
   text-decoration: none;
   transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
 
-  h2 {
+  .about-link-icon {
+    font-size: 2rem;
+    color: $color-primary;
     margin-bottom: $spacing-sm;
-    font-size: 1.25rem;
   }
 
-  p {
+  h2 {
     margin-bottom: 0;
-    color: $color-text-light;
+    font-size: 1.25rem;
   }
 
   &:hover {
@@ -104,6 +108,10 @@ img {
     color: $color-text;
     transform: translateY(-1px);
   }
+}
+
+.about-link-grid--compact {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 // Team member list (horizontal rows)

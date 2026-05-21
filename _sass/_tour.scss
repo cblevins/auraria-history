@@ -195,7 +195,7 @@
 
 .tour-landing-header {
   max-width: 760px;
-  margin-bottom: $spacing-xl;
+  margin-bottom: $spacing-md;
 
   h1 {
     margin-bottom: $spacing-md;
@@ -210,6 +210,7 @@
 
   .episode-listen {
     justify-content: center;
+    margin: $spacing-sm 0;
   }
 
   .episode-listen__badges {
@@ -282,14 +283,14 @@
 }
 
 .tour-landing-tabs {
-  margin-top: $spacing-xl;
+  margin-top: $spacing-md;
 }
 
 .tour-landing-tablist {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   margin-bottom: $spacing-lg;
-  border: 1px solid $color-border;
+  border: 1.5px solid $color-primary;
   border-radius: 6px;
   background-color: $color-white;
   overflow: hidden;
@@ -298,10 +299,11 @@
     min-height: 56px;
     padding: $spacing-sm $spacing-md;
     border: 0;
-    background: transparent;
+    background: $color-bg;
     color: $color-text-light;
     cursor: pointer;
     font: inherit;
+    font-size: 1.125rem;
     font-weight: 700;
     transition:
       background-color 0.15s,
@@ -328,10 +330,12 @@
     }
 
     &:hover {
+      background-color: darken(#FAFAF8, 4%);
       color: $color-primary;
     }
 
     &[aria-selected="true"]:hover {
+      background-color: darken($color-primary, 5%);
       color: $color-white;
     }
 
