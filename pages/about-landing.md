@@ -29,7 +29,7 @@ _Listening to Auraria's Past_ brings together historical context, community memo
   <div class="container">
     <div class="neh-acknowledgment">
       <img
-        src="{{ '/assets/images/neh-seal.png' | relative_url }}"
+        src="{{ '/assets/images/neh-seal.svg' | relative_url }}"
         alt="National Endowment for the Humanities seal"
         class="neh-seal"
       />

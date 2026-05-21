@@ -11,9 +11,9 @@
         <a href="{{ '/about/' | relative_url }}" {% if page.url contains '/about/' or page.url contains '/history/' or page.url contains '/process/' or page.url contains '/team/' %}aria-current="page"{% endif %}>About</a>
         <ul class="nav-submenu" aria-label="About pages">
           <li><a href="{{ '/about/' | relative_url }}" {% if page.url contains '/about/' %}aria-current="page"{% endif %}>About the Project</a></li>
-          <li><a href="{{ '/history/' | relative_url }}" {% if page.url contains '/history/' %}aria-current="page"{% endif %}>Auraria's History</a></li>
-          <li><a href="{{ '/process/' | relative_url }}" {% if page.url contains '/process/' %}aria-current="page"{% endif %}>How We Made This</a></li>
           <li><a href="{{ '/team/' | relative_url }}" {% if page.url contains '/team/' %}aria-current="page"{% endif %}>Project Team</a></li>
+          <li><a href="{{ '/process/' | relative_url }}" {% if page.url contains '/process/' %}aria-current="page"{% endif %}>How We Made This</a></li>
+          <li><a href="{{ '/history/' | relative_url }}" {% if page.url contains '/history/' %}aria-current="page"{% endif %}>Auraria's History</a></li>
         </ul>
       </li>
     </ul>

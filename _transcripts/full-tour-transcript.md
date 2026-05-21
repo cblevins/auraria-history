@@ -90,7 +90,7 @@ Imagine opening a jar of pickles and breathing in the sharp, tangy scent of vine
 
 This was the signature aroma of the Perkins-Epeneter pickle factory, located at the approximate spot where you are standing.
 
-The Perkins-Epeneter factory brined millions of cucumbers in large vats of salt-water each year  in order to make jars of dill pickles, sweet relish, and sauerkraut. The scent of dill and vinegar mingled with the smells coming from the other businesses and factories: Rubber tires. Cans of paint. Fermenting beer. Fried potato chips. All of this came together in what Sheila Perez-Kindle remembers as "the smell of business."
+The Perkins-Epeneter factory brined millions of cucumbers in large vats of salt-water each year in order to make jars of dill pickles, sweet relish, and sauerkraut. The scent of dill and vinegar mingled with the smells coming from the other businesses and factories: Rubber tires. Cans of paint. Fermenting beer. Fried potato chips. All of this came together in what Sheila Perez-Kindle remembers as "the smell of business."
 
 This mixed landscape of homes and businesses, warehouses and lots, streets and alleyways, became one big playground for the neighborhood kids. Some remember lining up for free daily pickles at the factory, while others claim they engaged in a bit of mischief, swiping a salty snack from the factory when nobody was looking.
 
@@ -226,13 +226,13 @@ Decades later, Rita Gomez Delgado reflected on the lasting impact of that day:
 
 **Rachel Gross**: If you look down on the other side of the iron fence, you might see a small rock on the ground in front of you. This rock is the only physical reminder anywhere on 9th street of the community that was displaced. Its hard-to-read text only gives a small hint of what they lost.
 
-**Sheila Perez-Kindle**: *In tribute to the several hundred families whose lives,*
+**Sheila Perez-Kindle**: _In tribute to the several hundred families whose lives,_
 
-*memories and sacrifices were offered so future*
+_memories and sacrifices were offered so future_
 
-*generations of students could attend the Auraria Campus*
+_generations of students could attend the Auraria Campus_
 
-*and enrich the greater Denver community.*
+_and enrich the greater Denver community._
 
 **Rachel Gross**: The rock in front of you can't possibly do justice to the deeper story of the neighborhood, the one about furniture destroyed out of despair, about lives disrupted, families scattered, and a neighborhood's spirit torn from the ground.
 
