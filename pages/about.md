@@ -21,19 +21,22 @@ _Listening to Auraria's Past_ is an audio walking tour that shares the history o
   </a>
 </div>
 
-<section class="home-neh">
-  <div class="container">
-    <div class="neh-acknowledgment">
+<section class="funding-section">
+  <div class="funding-acknowledgment">
+    <div class="funding-logos">
       <img
         src="{{ '/assets/images/neh-seal.svg' | relative_url }}"
         alt="National Endowment for the Humanities seal"
-        class="neh-seal"
+        class="funding-logo"
       />
-      <p>
-        <i>Listening to Auraria's Past</i> is made possible by a Humanities
-        Initiative at Colleges and Universities grant from the National
-        Endowment for the Humanities.
-      </p>
+      <img
+        src="{{ '/assets/images/cu-denver-logo.png' | relative_url }}"
+        alt="University of Colorado Denver logo"
+        class="funding-logo"
+      />
     </div>
+    <p>
+      <i>Listening to Auraria's Past</i> was made possible by a Humanities Initiative at Colleges and Universities grant from the National Endowment for the Humanities. Additional funding was provided by the University of Colorado Denver through the support of Regent Nolbert B. Chavez.
+    </p>
   </div>
 </section>
