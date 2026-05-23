@@ -14,4 +14,4 @@ rss_url: "https://media.rss.com/listening-auraria-past/feed.xml"
 amazon_url: "https://music.amazon.com/podcasts/ce1c0e70-1a1e-4c7e-9109-cb805147e8b7/episodes/523f9d40-9b03-41fe-94d7-029b60faf0ec/listening-to-auraria's-past-stop-10-redress-and-renovation"
 ---
 
-1050 9th Street — also called the Centennial House - has been a pivotal site for memorializing both the displacement and the ongoing struggles to access and expand the promised Displaced Aurarian Scholarship. This stop emphasizes the value of education for Displaced Aurarians and their descendants. 
+1050 9th Street - also called the Centennial House - has been a pivotal site for memorializing both the displacement and the ongoing struggles to access and expand the promised Displaced Aurarian Scholarship. This stop emphasizes the value of education for Displaced Aurarians and their descendants. 
